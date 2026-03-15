@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(25);
+SELECT plan(40);
 
 SELECT has_schema('stats', 'stats schema exists');
 SELECT has_table('stats', 'backfill_progress', 'stats.backfill_progress exists');
@@ -18,6 +18,10 @@ SELECT has_table('stats', 'gk_cache_visits', 'stats.gk_cache_visits exists');
 SELECT has_table('stats', 'user_cache_visits', 'stats.user_cache_visits exists');
 SELECT has_table('stats', 'gk_related_users', 'stats.gk_related_users exists');
 SELECT has_table('stats', 'user_related_users', 'stats.user_related_users exists');
+SELECT has_table('stats', 'hourly_activity', 'stats.hourly_activity exists');
+SELECT has_table('stats', 'country_pair_flows', 'stats.country_pair_flows exists');
+SELECT has_table('stats', 'gk_milestone_events', 'stats.gk_milestone_events exists');
+SELECT has_table('stats', 'first_finder_events', 'stats.first_finder_events exists');
 SELECT has_view('stats', 'v_waypoints_source_union', 'stats.v_waypoints_source_union exists');
 SELECT has_function('stats', 'fn_seed_waypoints', ARRAY[]::text[], 'stats.fn_seed_waypoints exists');
 SELECT has_function('stats', 'fn_snapshot_entity_counters', ARRAY[]::text[], 'stats.fn_snapshot_entity_counters exists');
@@ -26,6 +30,17 @@ SELECT has_function('stats', 'fn_snapshot_waypoints', ARRAY[]::text[], 'stats.fn
 SELECT has_function('stats', 'fn_snapshot_cache_visits', ARRAY[]::text[], 'stats.fn_snapshot_cache_visits exists');
 SELECT has_function('stats', 'fn_snapshot_relations', ARRAY[]::text[], 'stats.fn_snapshot_relations exists');
 SELECT has_function('stats', 'fn_snapshot_relationship_tables', ARRAY['daterange'], 'stats.fn_snapshot_relationship_tables exists');
+SELECT has_function('stats', 'fn_snapshot_hourly_activity', ARRAY[]::text[], 'stats.fn_snapshot_hourly_activity exists');
+SELECT has_function('stats', 'fn_snapshot_country_pair_flows', ARRAY[]::text[], 'stats.fn_snapshot_country_pair_flows exists');
+SELECT has_function('geokrety', 'fn_current_geokret_country', ARRAY['bigint'], 'geokrety.fn_current_geokret_country exists');
+SELECT has_function('geokrety', 'fn_gk_loves_activity', ARRAY[]::text[], 'geokrety.fn_gk_loves_activity exists');
+SELECT has_trigger('geokrety', 'gk_loves', 'tr_gk_loves_activity', 'tr_gk_loves_activity exists');
+SELECT has_function('geokrety', 'fn_gk_moves_emit_points_event', ARRAY[]::text[], 'geokrety.fn_gk_moves_emit_points_event exists');
+SELECT has_trigger('geokrety', 'gk_moves', 'tr_gk_moves_emit_points_event', 'tr_gk_moves_emit_points_event exists');
+SELECT has_function('geokrety', 'fn_gk_moves_milestones', ARRAY[]::text[], 'geokrety.fn_gk_moves_milestones exists');
+SELECT has_function('stats', 'fn_detect_first_finder', ARRAY['bigint', 'bigint', 'bigint', 'smallint', 'timestamp with time zone'], 'stats.fn_detect_first_finder exists');
+SELECT has_function('geokrety', 'fn_gk_moves_first_finder', ARRAY[]::text[], 'geokrety.fn_gk_moves_first_finder exists');
+SELECT has_trigger('geokrety', 'gk_moves', 'tr_gk_moves_after_first_finder', 'tr_gk_moves_after_first_finder exists');
 
 SELECT * FROM finish();
 ROLLBACK;
