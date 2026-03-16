@@ -29,10 +29,13 @@ VALUES
   (25626, 25612, 25603, 'GC256F', 'at', coords2position(48.20817, 16.37382), '2026-03-01 05:00:00+00', 0);
 
 SELECT is(stats.fn_snapshot_first_finder_events(), 2::bigint, 'full first-finder snapshot writes one canonical row per qualifying GeoKret');
+SELECT is((SELECT COUNT(*)::bigint FROM stats.first_finder_events), 2::bigint, 'snapshot emits exactly two canonical first-finder rows');
 SELECT is((SELECT move_id FROM stats.first_finder_events WHERE gk_id = 25610), 25622::bigint, 'first-finder snapshot chooses the earliest qualifying non-owner move');
 SELECT is((SELECT hours_since_creation FROM stats.first_finder_events WHERE gk_id = 25610), 25::smallint, 'first-finder snapshot stores whole hours since creation');
 SELECT is((SELECT COUNT(*)::bigint FROM stats.first_finder_events WHERE gk_id = 25611), 0::bigint, 'moves after the 168-hour cutoff are excluded');
 SELECT is((SELECT move_id FROM stats.first_finder_events WHERE gk_id = 25612), 25626::bigint, 'non-qualifying comment moves do not win first-finder detection');
+SELECT is((SELECT hours_since_creation FROM stats.first_finder_events WHERE gk_id = 25612), 5::smallint, 'hours_since_creation is computed correctly for GK 25612');
+SELECT is((SELECT move_type FROM stats.first_finder_events WHERE gk_id = 25612), 0::smallint, 'winning first-finder row preserves the qualifying move_type');
 
 UPDATE stats.first_finder_events
 SET finder_user_id = 25603
@@ -42,7 +45,7 @@ INSERT INTO stats.first_finder_events (gk_id, finder_user_id, move_id, move_type
 VALUES (25611, 25602, 25624, 0, 169, '2026-03-08 01:00:01+00', '2026-03-01 00:00:00+00');
 
 SELECT is(stats.fn_snapshot_first_finder_events(), 2::bigint, 'rerunning first-finder snapshot repairs stale rows and removes ghosts');
-SELECT is((SELECT finder_user_id FROM stats.first_finder_events WHERE gk_id = 25610), 25602::bigint, 'rerun repairs the canonical finder_user_id');
+SELECT is((SELECT finder_user_id FROM stats.first_finder_events WHERE gk_id = 25610), 25602::integer, 'rerun repairs the canonical finder_user_id');
 SELECT is((SELECT COUNT(*)::bigint FROM stats.first_finder_events WHERE gk_id = 25611), 0::bigint, 'rerun removes ghost rows outside the eligibility window');
 SELECT ok((SELECT COUNT(*) = 2 FROM stats.job_log WHERE job_name = 'fn_snapshot_first_finder_events' AND status = 'ok'), 'first-finder snapshot logs one ok job_log row per execution');
 SELECT ok((SELECT metadata ? 'timing_ms' FROM stats.job_log WHERE job_name = 'fn_snapshot_first_finder_events' ORDER BY id DESC LIMIT 1), 'first-finder snapshot logs timing metadata');

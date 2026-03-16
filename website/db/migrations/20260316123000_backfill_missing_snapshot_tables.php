@@ -262,32 +262,54 @@ BEGIN
   DROP TABLE IF EXISTS tmp_gk_country_history_snapshot;
 
   CREATE TEMP TABLE tmp_gk_country_history_snapshot ON COMMIT DROP AS
-  WITH ordered_moves AS (
+  WITH qualifying_moves AS (
     SELECT
-      m.id AS move_id,
-      m.geokret AS geokrety_id,
-      geokrety.fn_normalize_country_code(m.country) AS country_code,
-      m.moved_on_datetime AS arrived_at,
-      LAG(geokrety.fn_normalize_country_code(m.country)) OVER (
-        PARTITION BY m.geokret
-        ORDER BY m.moved_on_datetime, m.id
-      ) AS previous_country_code,
-      LEAD(m.moved_on_datetime) OVER (
-        PARTITION BY m.geokret
-        ORDER BY m.moved_on_datetime, m.id
-      ) AS departed_at
-    FROM geokrety.gk_moves m
-    WHERE m.country IS NOT NULL
-      AND m.move_type IN (0, 1, 3, 5)
+      normalized_moves.move_id,
+      normalized_moves.geokrety_id,
+      normalized_moves.country_code,
+      normalized_moves.arrived_at
+    FROM (
+      SELECT
+        m.id AS move_id,
+        m.geokret AS geokrety_id,
+        geokrety.fn_normalize_country_code(m.country) AS country_code,
+        m.moved_on_datetime AS arrived_at
+      FROM geokrety.gk_moves m
+      WHERE m.country IS NOT NULL
+        AND m.move_type IN (0, 1, 3, 5)
+    ) AS normalized_moves
+    WHERE normalized_moves.country_code IS NOT NULL
+  ),
+  country_transitions AS (
+    SELECT
+      ordered_moves.move_id,
+      ordered_moves.geokrety_id,
+      ordered_moves.country_code,
+      ordered_moves.arrived_at
+    FROM (
+      SELECT
+        qualifying_moves.move_id,
+        qualifying_moves.geokrety_id,
+        qualifying_moves.country_code,
+        qualifying_moves.arrived_at,
+        LAG(qualifying_moves.country_code) OVER (
+          PARTITION BY qualifying_moves.geokrety_id
+          ORDER BY qualifying_moves.arrived_at, qualifying_moves.move_id
+        ) AS previous_country_code
+      FROM qualifying_moves
+    ) AS ordered_moves
+    WHERE ordered_moves.previous_country_code IS DISTINCT FROM ordered_moves.country_code
   )
   SELECT
-    geokrety_id,
-    country_code,
-    arrived_at,
-    departed_at,
-    move_id
-  FROM ordered_moves
-  WHERE previous_country_code IS DISTINCT FROM country_code;
+    country_transitions.geokrety_id,
+    country_transitions.country_code,
+    country_transitions.arrived_at,
+    LEAD(country_transitions.arrived_at) OVER (
+      PARTITION BY country_transitions.geokrety_id
+      ORDER BY country_transitions.arrived_at, country_transitions.move_id
+    ) AS departed_at,
+    country_transitions.move_id
+  FROM country_transitions;
 
   TRUNCATE TABLE stats.gk_country_history RESTART IDENTITY;
 
@@ -495,7 +517,7 @@ BEGIN
   DROP TABLE IF EXISTS tmp_gk_milestone_events_snapshot;
 
   CREATE TEMP TABLE tmp_gk_milestone_events_snapshot ON COMMIT DROP AS
-  WITH qualifying_moves AS (
+  WITH qualifying_moves AS MATERIALIZED (
     SELECT
       m.geokret AS gk_id,
       m.id AS move_id,
@@ -512,7 +534,7 @@ BEGIN
     UNION ALL
     SELECT 10000::NUMERIC, 'km_10000'::TEXT
   ),
-  km_crossings AS (
+  km_running_totals AS (
     SELECT
       qualifying_moves.gk_id,
       qualifying_moves.move_id,
@@ -524,8 +546,21 @@ BEGIN
       ) AS running_km
     FROM qualifying_moves
   ),
+  km_crossings AS (
+    SELECT
+      km_running_totals.gk_id,
+      km_running_totals.move_id,
+      km_running_totals.actor_user_id,
+      km_running_totals.occurred_at,
+      km_running_totals.running_km,
+      LAG(km_running_totals.running_km, 1, 0::NUMERIC) OVER (
+        PARTITION BY km_running_totals.gk_id
+        ORDER BY km_running_totals.occurred_at, km_running_totals.move_id
+      ) AS previous_running_km
+    FROM km_running_totals
+  ),
   km_events AS (
-    SELECT DISTINCT ON (km_crossings.gk_id, km_thresholds.event_type)
+    SELECT
       km_crossings.gk_id,
       km_thresholds.event_type,
       km_thresholds.threshold_value AS event_value,
@@ -536,8 +571,8 @@ BEGIN
       km_crossings.occurred_at
     FROM km_crossings
     JOIN km_thresholds
-      ON km_crossings.running_km >= km_thresholds.threshold_value
-    ORDER BY km_crossings.gk_id, km_thresholds.event_type, km_crossings.occurred_at, km_crossings.move_id
+      ON km_crossings.previous_running_km < km_thresholds.threshold_value
+     AND km_crossings.running_km >= km_thresholds.threshold_value
   ),
   author_first_seen AS (
     SELECT
@@ -550,15 +585,14 @@ BEGIN
         ORDER BY distinct_authors.occurred_at, distinct_authors.move_id
       ) AS distinct_user_rank
     FROM (
-      SELECT DISTINCT ON (m.geokret, m.author)
-        m.geokret AS gk_id,
-        m.author AS actor_user_id,
-        m.id AS move_id,
-        m.moved_on_datetime AS occurred_at
-      FROM geokrety.gk_moves m
-      WHERE m.author IS NOT NULL
-        AND m.move_type IN (0, 1, 3, 5)
-      ORDER BY m.geokret, m.author, m.moved_on_datetime, m.id
+      SELECT DISTINCT ON (qualifying_moves.gk_id, qualifying_moves.actor_user_id)
+        qualifying_moves.gk_id,
+        qualifying_moves.actor_user_id,
+        qualifying_moves.move_id,
+        qualifying_moves.occurred_at
+      FROM qualifying_moves
+      WHERE qualifying_moves.actor_user_id IS NOT NULL
+      ORDER BY qualifying_moves.gk_id, qualifying_moves.actor_user_id, qualifying_moves.occurred_at, qualifying_moves.move_id
     ) AS distinct_authors
   ),
   user_thresholds AS (
