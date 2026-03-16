@@ -26,12 +26,14 @@ VALUES
 
 SELECT is(stats.fn_snapshot_gk_country_history(), 4::bigint, 'full country-history snapshot writes one interval per canonical transition');
 SELECT is((SELECT COUNT(*)::bigint FROM stats.gk_country_history WHERE geokrety_id = 25510), 3::bigint, 'same-country repeats do not create extra intervals');
+SELECT is((SELECT arrived_at FROM stats.gk_country_history WHERE geokrety_id = 25510 AND country_code = 'PL'), '2026-02-01 10:00:00+00'::timestamptz, 'PL interval starts at the first PL move');
 SELECT is((SELECT departed_at FROM stats.gk_country_history WHERE geokrety_id = 25510 AND country_code = 'PL'), '2026-02-03 10:00:00+00'::timestamptz, 'PL interval closes at the first DE transition');
 SELECT is((SELECT departed_at FROM stats.gk_country_history WHERE geokrety_id = 25510 AND country_code = 'DE'), '2026-02-05 10:00:00+00'::timestamptz, 'DE interval closes at the first AT transition');
 SELECT is((SELECT COUNT(*)::bigint FROM stats.gk_country_history WHERE geokrety_id = 25510 AND country_code = 'AT' AND departed_at IS NULL), 1::bigint, 'last canonical country interval stays open');
+SELECT is((SELECT COUNT(*)::bigint FROM stats.gk_country_history WHERE geokrety_id = 25511 AND country_code = 'PL' AND departed_at IS NULL), 1::bigint, 'single-country GeoKret keeps one open interval');
 
 INSERT INTO stats.gk_country_history (id, geokrety_id, country_code, arrived_at, departed_at, move_id)
-VALUES (999999, 25510, 'FR', '2026-02-06 00:00:00+00', NULL, 25524);
+VALUES (999999, 25510, 'FR', '2026-01-31 00:00:00+00', '2026-02-01 10:00:00+00', 25524);
 
 UPDATE stats.gk_country_history
 SET departed_at = '2026-02-02 00:00:00+00'
@@ -39,6 +41,7 @@ WHERE geokrety_id = 25510
   AND country_code = 'PL';
 
 SELECT is(stats.fn_snapshot_gk_country_history(), 4::bigint, 'rerunning country-history snapshot repairs stale rows and removes ghosts');
+SELECT is((SELECT departed_at FROM stats.gk_country_history WHERE geokrety_id = 25510 AND country_code = 'PL'), '2026-02-03 10:00:00+00'::timestamptz, 'rerun repairs the PL interval close timestamp');
 SELECT is((SELECT COUNT(*)::bigint FROM stats.gk_country_history WHERE geokrety_id = 25510 AND country_code = 'FR'), 0::bigint, 'rerun removes ghost country-history rows');
 SELECT ok((SELECT COUNT(*) = 0 FROM stats.gk_country_history a JOIN stats.gk_country_history b ON a.geokrety_id = b.geokrety_id AND a.id < b.id AND tstzrange(a.arrived_at, COALESCE(a.departed_at, 'infinity'::timestamptz), '[)') && tstzrange(b.arrived_at, COALESCE(b.departed_at, 'infinity'::timestamptz), '[)')), 'country-history snapshot preserves the no-overlap invariant');
 SELECT ok((SELECT COUNT(*) = 2 FROM stats.job_log WHERE job_name = 'fn_snapshot_gk_country_history' AND status = 'ok'), 'country-history snapshot logs one ok job_log row per execution');

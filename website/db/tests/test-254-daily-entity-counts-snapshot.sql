@@ -30,6 +30,8 @@ INSERT INTO gk_loves (id, geokret, "user", created_on_datetime)
 VALUES (25440, 25410, 25402, '2026-01-03 12:00:00+00');
 
 SELECT is(stats.fn_snapshot_daily_entity_counts(), 75::bigint, 'full daily_entity_counts snapshot writes three days for all 25 canonical entities');
+SELECT is((SELECT COUNT(DISTINCT count_date)::bigint FROM stats.daily_entity_counts), 3::bigint, 'snapshot covers exactly three UTC dates');
+SELECT is((SELECT COUNT(DISTINCT entity)::bigint FROM stats.daily_entity_counts), 25::bigint, 'snapshot emits the full canonical 25-entity catalog');
 SELECT is((SELECT cnt FROM stats.daily_entity_counts WHERE count_date = '2026-01-01' AND entity = 'gk_users'), 1::bigint, 'day 1 user count is cumulative from joined_on_datetime');
 SELECT is((SELECT cnt FROM stats.daily_entity_counts WHERE count_date = '2026-01-02' AND entity = 'gk_geokrety'), 2::bigint, 'day 2 GeoKret total includes both created rows');
 SELECT is((SELECT cnt FROM stats.daily_entity_counts WHERE count_date = '2026-01-02' AND entity = 'gk_pictures_type_1'), 1::bigint, 'day 2 uploaded move picture count is cumulative');
