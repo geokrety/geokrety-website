@@ -1,5 +1,5 @@
 BEGIN;
-SELECT plan(50);
+SELECT plan(54);
 
 SELECT has_schema('stats', 'stats schema exists');
 SELECT has_table('stats', 'backfill_progress', 'stats.backfill_progress exists');
@@ -25,13 +25,17 @@ SELECT has_table('stats', 'first_finder_events', 'stats.first_finder_events exis
 SELECT has_view('stats', 'v_waypoints_source_union', 'stats.v_waypoints_source_union exists');
 SELECT has_function('stats', 'fn_seed_waypoints', ARRAY[]::text[], 'stats.fn_seed_waypoints exists');
 SELECT has_function('stats', 'fn_snapshot_entity_counters', ARRAY[]::text[], 'stats.fn_snapshot_entity_counters exists');
+SELECT has_function('stats', 'fn_snapshot_daily_entity_counts', ARRAY[]::text[], 'stats.fn_snapshot_daily_entity_counts exists');
 SELECT has_function('stats', 'fn_seed_daily_activity', ARRAY['tstzrange'], 'stats.fn_seed_daily_activity exists');
-SELECT has_function('stats', 'fn_snapshot_waypoints', ARRAY[]::text[], 'stats.fn_snapshot_waypoints exists');
-SELECT has_function('stats', 'fn_snapshot_cache_visits', ARRAY[]::text[], 'stats.fn_snapshot_cache_visits exists');
-SELECT has_function('stats', 'fn_snapshot_relations', ARRAY[]::text[], 'stats.fn_snapshot_relations exists');
+SELECT has_function('stats', 'fn_snapshot_gk_country_history', ARRAY[]::text[], 'stats.fn_snapshot_gk_country_history exists');
+SELECT has_function('stats', 'fn_snapshot_waypoints', ARRAY['daterange'], 'stats.fn_snapshot_waypoints exists');
+SELECT has_function('stats', 'fn_snapshot_cache_visits', ARRAY['daterange'], 'stats.fn_snapshot_cache_visits exists');
+SELECT has_function('stats', 'fn_snapshot_relations', ARRAY['daterange'], 'stats.fn_snapshot_relations exists');
 SELECT has_function('stats', 'fn_snapshot_relationship_tables', ARRAY['daterange'], 'stats.fn_snapshot_relationship_tables exists');
 SELECT has_function('stats', 'fn_snapshot_hourly_activity', ARRAY[]::text[], 'stats.fn_snapshot_hourly_activity exists');
 SELECT has_function('stats', 'fn_snapshot_country_pair_flows', ARRAY[]::text[], 'stats.fn_snapshot_country_pair_flows exists');
+SELECT has_function('stats', 'fn_snapshot_first_finder_events', ARRAY[]::text[], 'stats.fn_snapshot_first_finder_events exists');
+SELECT has_function('stats', 'fn_snapshot_gk_milestone_events', ARRAY[]::text[], 'stats.fn_snapshot_gk_milestone_events exists');
 SELECT has_function('geokrety', 'fn_current_geokret_country', ARRAY['bigint'], 'geokrety.fn_current_geokret_country exists');
 SELECT has_function('geokrety', 'fn_gk_loves_activity', ARRAY[]::text[], 'geokrety.fn_gk_loves_activity exists');
 SELECT has_trigger('geokrety', 'gk_loves', 'tr_gk_loves_activity', 'tr_gk_loves_activity exists');
