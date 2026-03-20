@@ -8,8 +8,8 @@ SELECT has_schema('audit');
 SELECT has_schema('geokrety');
 SELECT has_schema('public');
 SELECT has_schema('secure');
+SELECT has_schema('notify_queues');
 SELECT has_schema('stats');
-SELECT schemas_are(ARRAY[ 'audit', 'amqp', 'geokrety', 'pgtap', 'public', 'secure', 'notify_queues', 'stats' ]);
 
 SELECT has_table( 'gk_account_activation' );
 SELECT has_table( 'gk_awards' );

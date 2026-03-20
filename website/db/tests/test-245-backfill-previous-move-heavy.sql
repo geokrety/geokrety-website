@@ -16,7 +16,7 @@ VALUES (24510, 'Heavy previous GK', 0, 24501, 24501, '2019-01-01 00:00:00+00');
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
 VALUES (24520, 24510, 24501, coords2position(52.22968, 21.01223), '2019-01-02 08:00:00+00', 0);
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
-VALUES (24521, 24510, 24501, coords2position(50.06143, 19.93658), '2020-01-02 08:00:00+00', 1);
+VALUES (24521, 24510, 24501, coords2position(50.06143, 19.93658), '2020-01-02 08:00:00+00', 3);
 INSERT INTO gk_moves (id, geokret, author, moved_on_datetime, move_type)
 VALUES (24523, 24510, 24501, '2020-06-02 08:00:00+00', 1);
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)

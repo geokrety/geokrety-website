@@ -22,7 +22,7 @@ VALUES
 INSERT INTO gk_moves (id, geokret, author, waypoint, country, position, moved_on_datetime, move_type)
 VALUES
   (25620, 25610, 25601, 'GC256A', 'pl', coords2position(52.22968, 21.01223), '2026-03-01 01:00:00+00', 0),
-  (25622, 25610, 25602, NULL, 'de', coords2position(52.52000, 13.40500), '2026-03-02 01:00:00+00', 1),
+  (25622, 25610, 25602, NULL, 'de', coords2position(52.52000, 13.40500), '2026-03-02 01:00:00+00', 5),
   (25623, 25610, 25603, 'GC256D', 'de', coords2position(52.53000, 13.41000), '2026-03-02 02:00:00+00', 5),
   (25624, 25611, 25602, 'GC256E', 'fr', coords2position(48.85661, 2.35222), '2026-03-08 01:00:01+00', 0),
   (25625, 25612, 25602, NULL, NULL, NULL, '2026-03-01 03:00:00+00', 2),

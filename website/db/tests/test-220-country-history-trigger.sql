@@ -34,7 +34,7 @@ VALUES (12014, 12001, 12001, '2020-08-01 12:00:00+00', 4);
 SELECT is((SELECT COUNT(*)::bigint FROM stats.gk_country_history WHERE geokrety_id = 12001), 2::bigint, 'ARCHIVE move does not affect country history');
 
 INSERT INTO gk_moves (id, geokret, author, moved_on_datetime, move_type)
-VALUES (12015, 12001, 12001, '2020-08-01 13:00:00+00', 0);
+VALUES (12015, 12001, 12001, '2020-08-01 13:00:00+00', 1);
 SELECT is((SELECT COUNT(*)::bigint FROM stats.gk_country_history WHERE geokrety_id = 12001), 2::bigint, 'move with NULL country does not affect country history');
 
 INSERT INTO gk_geokrety (id, name, type, created_on_datetime) VALUES (12002, 'Country history GK 2', 0, '2020-08-02 00:00:00+00');
@@ -101,7 +101,7 @@ INSERT INTO gk_geokrety (id, name, type, created_on_datetime) VALUES (12006, 'Co
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
 VALUES (12060, 12006, 12001, coords2position(52.22968, 21.01223), '2020-08-06 08:00:00+00', 0);
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
-VALUES (12061, 12006, 12001, coords2position(48.14860, 17.10770), '2020-08-06 09:00:00+00', 1);
+VALUES (12061, 12006, 12001, coords2position(48.14860, 17.10770), '2020-08-06 09:00:00+00', 5);
 SELECT results_eq(
   $$
   SELECT country_code, arrived_at, COALESCE(departed_at, 'infinity'::timestamptz)

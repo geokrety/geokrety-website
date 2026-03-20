@@ -17,7 +17,7 @@ VALUES (24411, 'Backfill previous GK 2', 0, 24402, 24402, '2020-01-01 00:00:00+0
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
 VALUES (24420, 24410, 24401, coords2position(52.22968, 21.01223), '2020-02-01 08:00:00+00', 0);
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
-VALUES (24421, 24410, 24401, coords2position(50.06143, 19.93658), '2020-02-02 09:00:00+00', 1);
+VALUES (24421, 24410, 24401, coords2position(50.06143, 19.93658), '2020-02-02 09:00:00+00', 3);
 INSERT INTO gk_moves (id, geokret, author, moved_on_datetime, move_type)
 VALUES (24425, 24410, 24401, '2020-02-02 12:00:00+00', 1);
 INSERT INTO gk_moves (id, geokret, author, moved_on_datetime, move_type)

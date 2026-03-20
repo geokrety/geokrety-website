@@ -18,7 +18,7 @@ VALUES
 INSERT INTO gk_moves (id, geokret, author, waypoint, country, position, moved_on_datetime, move_type)
 VALUES
   (25520, 25510, 25501, 'GC255A', 'pl', coords2position(52.22968, 21.01223), '2026-02-01 10:00:00+00', 0),
-  (25521, 25510, 25501, NULL, 'pl', coords2position(52.30000, 21.00000), '2026-02-02 10:00:00+00', 1),
+  (25521, 25510, 25501, NULL, 'pl', coords2position(52.30000, 21.00000), '2026-02-02 10:00:00+00', 3),
   (25522, 25510, 25501, 'GC255C', 'de', coords2position(52.52000, 13.40500), '2026-02-03 10:00:00+00', 5),
   (25523, 25510, 25501, NULL, 'fr', NULL, '2026-02-04 10:00:00+00', 2),
   (25524, 25510, 25501, 'GC255D', 'at', coords2position(48.20817, 16.37382), '2026-02-05 10:00:00+00', 3),

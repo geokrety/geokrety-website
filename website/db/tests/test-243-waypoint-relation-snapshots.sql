@@ -35,8 +35,8 @@ INSERT INTO gk_moves (id, geokret, author, waypoint, country, position, moved_on
 VALUES (24321, 24310, 24302, 'GC243X', 'pl', coords2position(52.22968, 21.01223), '2020-01-03 11:00:00+00', 5);
 INSERT INTO gk_moves (id, geokret, author, waypoint, country, position, moved_on_datetime, move_type)
 VALUES (24322, 24310, 24302, 'oc243y', 'de', coords2position(52.52000, 13.40500), '2020-01-04 12:00:00+00', 3);
-INSERT INTO gk_moves (id, geokret, author, country, position, moved_on_datetime, move_type)
-VALUES (24323, 24310, 24301, 'pl', coords2position(52.22968, 21.01223), '2020-01-05 13:00:00+00', 2);
+INSERT INTO gk_moves (id, geokret, author, country, moved_on_datetime, move_type)
+VALUES (24323, 24310, 24301, 'pl', '2020-01-05 13:00:00+00', 2);
 INSERT INTO gk_moves (id, geokret, username, waypoint, country, position, moved_on_datetime, move_type)
 VALUES (24324, 24310, 'snapshot-anon', 'oc243y', 'de', coords2position(52.52000, 13.40500), '2020-01-06 14:00:00+00', 0);
 
