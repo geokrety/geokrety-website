@@ -27,6 +27,7 @@ class PrizeAwarderTopSpreaders extends PrizeAwarderBase {
             WHERE date_part('year', moved_on_datetime) = ?
             AND author IS NOT NULL
             AND move_type = ?
+            AND gkm.logged_at_author_home = false
             GROUP BY gkm.author, gku.username
             ORDER BY total DESC, SUM(distance) DESC
             LIMIT 100

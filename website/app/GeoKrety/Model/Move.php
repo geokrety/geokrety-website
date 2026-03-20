@@ -159,6 +159,10 @@ class Move extends Base {
             'type' => Schema::DT_DOUBLE,
             'nullable' => true,
         ],
+        'logged_at_author_home' => [
+            'type' => Schema::DT_BOOLEAN,
+            'default' => false,
+        ],
     ];
 
     public function set_comment($value): string {
