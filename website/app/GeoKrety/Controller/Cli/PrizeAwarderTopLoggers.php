@@ -32,6 +32,7 @@ class PrizeAwarderTopLoggers extends PrizeAwarderBase {
                  OR move_type = ?
                  OR move_type = ?
             )
+            AND gkm.logged_at_author_home = false
             GROUP BY gkm.author, gku.username
             ORDER BY total DESC, SUM(distance) DESC
             LIMIT 100
