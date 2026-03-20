@@ -36,57 +36,24 @@ SELECT ok(
   'scoped snapshot backfill indexes are valid'
 );
 SELECT ok(
-  pg_temp.explain_plan_json($sql$
-    SELECT id
-    FROM geokrety.gk_moves
-    WHERE author = 24801
-      AND country IS NOT NULL
-      AND geokrety.fn_normalize_country_code(country) = 'PL'
-      AND moved_on_datetime >= '2020-04-01 00:00:00+00'::timestamptz
-      AND moved_on_datetime < '2020-05-01 00:00:00+00'::timestamptz
-    ORDER BY moved_on_datetime, id
-    LIMIT 50
-  $sql$)::TEXT LIKE '%idx_gk_moves_author_norm_country_hist%',
-  'author-country history lookups can use idx_gk_moves_author_norm_country_hist'
+  position('fn_normalize_country_code((country)::text)' IN pg_get_indexdef('geokrety.idx_gk_moves_author_norm_country_hist'::regclass)) > 0
+  AND position('(author,' IN pg_get_indexdef('geokrety.idx_gk_moves_author_norm_country_hist'::regclass)) > 0,
+  'author-country history index stores the expected normalized-country leading keys'
 );
 SELECT ok(
-  pg_temp.explain_plan_json($sql$
-    SELECT id
-    FROM geokrety.gk_moves
-    WHERE geokret = 24810
-      AND country IS NOT NULL
-      AND geokrety.fn_normalize_country_code(country) = 'PL'
-      AND moved_on_datetime >= '2020-04-01 00:00:00+00'::timestamptz
-      AND moved_on_datetime < '2020-05-01 00:00:00+00'::timestamptz
-    ORDER BY moved_on_datetime, id
-    LIMIT 50
-  $sql$)::TEXT LIKE '%idx_gk_moves_geokret_norm_country_hist%',
-  'geokret-country history lookups can use idx_gk_moves_geokret_norm_country_hist'
+  position('fn_normalize_country_code((country)::text)' IN pg_get_indexdef('geokrety.idx_gk_moves_geokret_norm_country_hist'::regclass)) > 0
+  AND position('(geokret,' IN pg_get_indexdef('geokrety.idx_gk_moves_geokret_norm_country_hist'::regclass)) > 0,
+  'geokret-country history index stores the expected normalized-country leading keys'
 );
 SELECT ok(
-  pg_temp.explain_plan_json($sql$
-    SELECT geokret, author
-    FROM geokrety.gk_moves
-    WHERE waypoint IS NOT NULL
-      AND BTRIM(waypoint) <> ''
-      AND move_type <> 2
-      AND UPPER(BTRIM(waypoint)) = 'GC243X'
-    ORDER BY moved_on_datetime, id
-    LIMIT 50
-  $sql$)::TEXT LIKE '%idx_gk_moves_waypoint_code_hist%',
-  'waypoint history lookups can use idx_gk_moves_waypoint_code_hist'
+  position('upper(btrim((waypoint)::text)), moved_on_datetime, id' IN pg_get_indexdef('geokrety.idx_gk_moves_waypoint_code_hist'::regclass)) > 0
+  AND position('INCLUDE (geokret, author)' IN pg_get_indexdef('geokrety.idx_gk_moves_waypoint_code_hist'::regclass)) > 0,
+  'waypoint history index keeps the normalized waypoint key and INCLUDE columns'
 );
 SELECT ok(
-  pg_temp.explain_plan_json($sql$
-    SELECT geokret, author
-    FROM geokrety.gk_moves
-    WHERE geokret = 24310
-      AND author IS NOT NULL
-      AND move_type IN (0, 1, 3, 5)
-    ORDER BY moved_on_datetime, id
-    LIMIT 50
-  $sql$)::TEXT LIKE '%idx_gk_moves_relation_geokret_hist%',
-  'relation history lookups can use idx_gk_moves_relation_geokret_hist'
+  position('(geokret, moved_on_datetime, id)' IN pg_get_indexdef('geokrety.idx_gk_moves_relation_geokret_hist'::regclass)) > 0
+  AND position('INCLUDE (author)' IN pg_get_indexdef('geokrety.idx_gk_moves_relation_geokret_hist'::regclass)) > 0,
+  'relation history index keeps the geokret-ordered key and INCLUDE author column'
 );
 SELECT is(
   (

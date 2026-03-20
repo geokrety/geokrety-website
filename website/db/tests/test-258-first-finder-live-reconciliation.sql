@@ -27,7 +27,7 @@ SELECT is((SELECT move_id FROM stats.first_finder_events WHERE gk_id = 25810), 2
 SELECT is((SELECT event_value FROM stats.gk_milestone_events WHERE gk_id = 25810 AND event_type = 'first_find'), 5::numeric, 'initial first_find milestone stores whole hours since creation');
 
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
-VALUES (25821, 25810, 25803, coords2position(52.52000, 13.40500), '2020-01-01 02:00:00+00', 1);
+VALUES (25821, 25810, 25803, coords2position(52.52000, 13.40500), '2020-01-01 02:00:00+00', 5);
 
 SELECT is((SELECT move_id FROM stats.first_finder_events WHERE gk_id = 25810), 25821::bigint, 'later backdated insert replaces the canonical first-finder row');
 SELECT is((SELECT additional_data->>'move_id' FROM stats.gk_milestone_events WHERE gk_id = 25810 AND event_type = 'first_find'), '25821', 'first_find milestone is updated to the canonical triggering move');
@@ -40,7 +40,8 @@ DELETE FROM gk_moves WHERE id = 25822;
 SELECT is((SELECT move_id FROM stats.first_finder_events WHERE gk_id = 25810), 25821::bigint, 'deleting a losing candidate leaves the canonical first-finder row unchanged');
 
 UPDATE gk_moves
-SET move_type = 2
+SET move_type = 2,
+    position = NULL
 WHERE id = 25821;
 
 SELECT is((SELECT move_id FROM stats.first_finder_events WHERE gk_id = 25810), 25820::bigint, 'disqualifying the winning move falls back to the next canonical candidate');

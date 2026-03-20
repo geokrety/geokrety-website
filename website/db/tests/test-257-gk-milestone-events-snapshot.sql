@@ -22,20 +22,22 @@ VALUES
 
 SET LOCAL session_replication_role = replica;
 
-INSERT INTO gk_moves (id, geokret, author, waypoint, country, position, moved_on_datetime, move_type)
+INSERT INTO gk_moves (id, geokret, author, waypoint, country, lat, lon, position, moved_on_datetime, move_type)
 VALUES
-  (25720, 25710, 25701, 'GC257A', 'pl', coords2position(52.22968, 21.01223), '2026-03-01 01:00:00+00', 0),
-  (25721, 25710, 25702, NULL, 'de', coords2position(52.52000, 13.40500), '2026-03-01 02:00:00+00', 1),
-  (25722, 25710, 25703, 'GC257C', 'fr', coords2position(48.85661, 2.35222), '2026-03-01 03:00:00+00', 3),
-  (25723, 25710, 25704, 'GC257D', 'at', coords2position(48.20817, 16.37382), '2026-03-01 04:00:00+00', 5);
+  (25720, 25710, 25701, 'GC257A', 'pl', 52.22968, 21.01223, coords2position(52.22968, 21.01223), '2026-03-01 01:00:00+00', 0),
+  (25721, 25710, 25702, NULL, 'de', 52.52000, 13.40500, coords2position(52.52000, 13.40500), '2026-03-01 02:00:00+00', 5),
+  (25722, 25710, 25703, 'GC257C', 'fr', 48.85661, 2.35222, coords2position(48.85661, 2.35222), '2026-03-01 03:00:00+00', 3),
+  (25723, 25710, 25704, 'GC257D', 'at', 48.20817, 16.37382, coords2position(48.20817, 16.37382), '2026-03-01 04:00:00+00', 5);
 
-INSERT INTO gk_moves (id, geokret, author, waypoint, country, position, moved_on_datetime, move_type)
+INSERT INTO gk_moves (id, geokret, author, waypoint, country, lat, lon, position, moved_on_datetime, move_type)
 SELECT
   25730 + row_number() OVER (ORDER BY series_id),
   25711,
   series_id,
   format('GC257%s', row_number() OVER (ORDER BY series_id)),
   'pl',
+  52.22968,
+  21.01223,
   coords2position(52.22968, 21.01223),
   '2026-03-02 00:00:00+00'::timestamptz + (row_number() OVER (ORDER BY series_id) * interval '1 hour'),
   0

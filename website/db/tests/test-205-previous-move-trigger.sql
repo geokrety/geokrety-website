@@ -6,6 +6,7 @@ SELECT plan(57);
 ALTER TABLE geokrety.gk_moves DISABLE TRIGGER before_40_update_missing;
 
 \set move_type_drop 0
+\set move_type_grab 1
 \set move_type_comment 2
 \set move_type_archive 4
 
@@ -55,16 +56,16 @@ SELECT is((SELECT km_distance FROM gk_moves WHERE id = 504), NULL::numeric, 'arc
 
 INSERT INTO gk_geokrety (id, name, type, created_on_datetime) VALUES (504, 'Null position GK', 0, '2020-01-01 00:00:00+00');
 INSERT INTO gk_moves (id, geokret, author, moved_on_datetime, move_type)
-VALUES (505, 504, 501, '2020-01-05 10:00:00+00', :move_type_drop);
-SELECT is((SELECT previous_move_id FROM gk_moves WHERE id = 505), NULL::bigint, 'location-bearing move without position leaves previous_move_id NULL');
-SELECT is((SELECT previous_position_id FROM gk_moves WHERE id = 505), NULL::bigint, 'location-bearing move without position leaves previous_position_id NULL');
-SELECT is((SELECT km_distance FROM gk_moves WHERE id = 505), NULL::numeric, 'location-bearing move without position leaves km_distance NULL');
+VALUES (505, 504, 501, '2020-01-05 10:00:00+00', :move_type_grab);
+SELECT is((SELECT previous_move_id FROM gk_moves WHERE id = 505), NULL::bigint, 'qualifying move without position leaves previous_move_id NULL');
+SELECT is((SELECT previous_position_id FROM gk_moves WHERE id = 505), NULL::bigint, 'qualifying move without position leaves previous_position_id NULL');
+SELECT is((SELECT km_distance FROM gk_moves WHERE id = 505), NULL::numeric, 'qualifying move without position leaves km_distance NULL');
 
 INSERT INTO gk_geokrety (id, name, type, created_on_datetime) VALUES (511, 'Split chain GK', 0, '2020-01-01 00:00:00+00');
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
 VALUES (580, 511, 501, coords2position(52.22968, 21.01223), '2020-01-06 08:00:00+00', :move_type_drop);
 INSERT INTO gk_moves (id, geokret, author, moved_on_datetime, move_type)
-VALUES (581, 511, 501, '2020-01-06 09:00:00+00', :move_type_drop);
+VALUES (581, 511, 501, '2020-01-06 09:00:00+00', :move_type_grab);
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
 VALUES (582, 511, 501, coords2position(52.52000, 13.40500), '2020-01-06 10:00:00+00', :move_type_drop);
 SELECT is((SELECT previous_move_id FROM gk_moves WHERE id = 581), 580::bigint, 'non-position qualifying move stays in the previous_move_id chain');
@@ -102,7 +103,7 @@ VALUES (600, 513, 501, coords2position(52.22968, 21.01223), '2020-01-07 08:00:00
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
 VALUES (602, 513, 501, coords2position(48.20820, 16.37380), '2020-04-07 08:00:00+00', :move_type_drop);
 INSERT INTO gk_moves (id, geokret, author, moved_on_datetime, move_type)
-VALUES (601, 513, 501, '2020-02-07 08:00:00+00', :move_type_drop);
+VALUES (601, 513, 501, '2020-02-07 08:00:00+00', :move_type_grab);
 SELECT is((SELECT previous_move_id FROM gk_moves WHERE id = 601), 600::bigint, 'retroactive non-position insert links to the preceding event-chain move');
 SELECT is((SELECT previous_position_id FROM gk_moves WHERE id = 601), 600::bigint, 'retroactive non-position insert inherits the previous positioned move');
 SELECT is((SELECT previous_move_id FROM gk_moves WHERE id = 602), 601::bigint, 'retroactive non-position insert rewires successor previous_move_id');

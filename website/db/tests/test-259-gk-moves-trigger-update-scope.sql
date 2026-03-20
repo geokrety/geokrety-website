@@ -10,13 +10,13 @@ SELECT matches(
 );
 SELECT matches(
   (SELECT pg_get_triggerdef(oid) FROM pg_trigger WHERE tgname = 'tr_gk_moves_after_country_rollups' AND tgrelid = 'geokrety.gk_moves'::regclass),
-  'AFTER INSERT OR DELETE OR UPDATE OF geokret, author, country, moved_on_datetime, move_type ON geokrety\.gk_moves FOR EACH ROW EXECUTE FUNCTION fn_gk_moves_country_rollups\(\)',
-  'country rollups trigger ignores derived-column-only updates'
+  'AFTER INSERT OR DELETE OR UPDATE OF geokret, author, lat, lon, "position", country, moved_on_datetime, move_type ON geokrety\.gk_moves FOR EACH ROW EXECUTE FUNCTION fn_gk_moves_country_rollups\(\)',
+  'country rollups trigger watches coordinate-driving updates while still ignoring derived-column-only repairs'
 );
 SELECT matches(
   (SELECT pg_get_triggerdef(oid) FROM pg_trigger WHERE tgname = 'tr_gk_moves_after_country_history' AND tgrelid = 'geokrety.gk_moves'::regclass),
-  'AFTER INSERT OR DELETE OR UPDATE OF geokret, country, moved_on_datetime, move_type ON geokrety\.gk_moves FOR EACH ROW EXECUTE FUNCTION fn_gk_moves_country_history\(\)',
-  'country history trigger watches only interval-shaping columns'
+  'AFTER INSERT OR DELETE OR UPDATE OF geokret, lat, lon, "position", country, moved_on_datetime, move_type ON geokrety\.gk_moves FOR EACH ROW EXECUTE FUNCTION fn_gk_moves_country_history\(\)',
+  'country history trigger watches interval-shaping and coordinate-driving columns'
 );
 SELECT matches(
   (SELECT pg_get_triggerdef(oid) FROM pg_trigger WHERE tgname = 'tr_gk_moves_after_waypoint_visits' AND tgrelid = 'geokrety.gk_moves'::regclass),

@@ -24,8 +24,8 @@ VALUES (23011, 23002, 'anon-waypoint-cache', coords2position(50.07550, 14.43780)
 
 SELECT is((SELECT COUNT(*)::bigint FROM stats.user_cache_visits uv JOIN stats.waypoints w ON w.id = uv.waypoint_id WHERE w.waypoint_code = 'ZZS4T8B'), 0::bigint, 'anonymous moves skip user_cache_visits');
 
-INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
-VALUES (23012, 23003, 23001, coords2position(48.20820, 16.37380), '2020-08-01 12:00:00+00', 2);
+INSERT INTO gk_moves (id, geokret, author, moved_on_datetime, move_type)
+VALUES (23012, 23003, 23001, '2020-08-01 12:00:00+00', 2);
 
 SELECT is((SELECT COUNT(*)::bigint FROM stats.gk_cache_visits WHERE gk_id = 23003), 0::bigint, 'comment moves skip cache visit aggregation');
 

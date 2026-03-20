@@ -89,12 +89,12 @@ CREATE TRIGGER tr_gk_moves_after_sharded_counters
 
 DROP TRIGGER IF EXISTS tr_gk_moves_after_country_rollups ON geokrety.gk_moves;
 CREATE TRIGGER tr_gk_moves_after_country_rollups
-  AFTER INSERT OR DELETE OR UPDATE OF geokret, author, country, moved_on_datetime, move_type ON geokrety.gk_moves
+  AFTER INSERT OR DELETE OR UPDATE OF geokret, author, lat, lon, position, country, moved_on_datetime, move_type ON geokrety.gk_moves
   FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_country_rollups();
 
 DROP TRIGGER IF EXISTS tr_gk_moves_after_country_history ON geokrety.gk_moves;
 CREATE TRIGGER tr_gk_moves_after_country_history
-  AFTER INSERT OR DELETE OR UPDATE OF geokret, country, moved_on_datetime, move_type ON geokrety.gk_moves
+  AFTER INSERT OR DELETE OR UPDATE OF geokret, lat, lon, position, country, moved_on_datetime, move_type ON geokrety.gk_moves
   FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_country_history();
 
 DROP TRIGGER IF EXISTS tr_gk_moves_after_waypoint_visits ON geokrety.gk_moves;

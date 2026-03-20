@@ -19,7 +19,7 @@ VALUES (23110, 23101, 23101, coords2position(52.22968, 21.01223), '2020-09-01 10
 SELECT is((SELECT interaction_count FROM stats.gk_related_users WHERE geokrety_id = 23101 AND user_id = 23101), 1::bigint, 'first qualifying move creates the GK-user relation');
 
 INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
-VALUES (23111, 23101, 23102, coords2position(52.52000, 13.40500), '2020-09-01 11:00:00+00', 1);
+VALUES (23111, 23101, 23102, coords2position(52.52000, 13.40500), '2020-09-01 11:00:00+00', 5);
 
 SELECT is((SELECT interaction_count FROM stats.gk_related_users WHERE geokrety_id = 23101 AND user_id = 23102), 1::bigint, 'second user on the same GK creates its GK-user relation');
 SELECT is((SELECT shared_geokrety_count FROM stats.user_related_users WHERE user_id = 23101 AND related_user_id = 23102), 1::bigint, 'user_related_users stores A to B');
@@ -36,8 +36,8 @@ VALUES (23112, 23101, 23101, coords2position(50.07550, 14.43780), '2020-09-01 12
 SELECT is((SELECT interaction_count FROM stats.gk_related_users WHERE geokrety_id = 23101 AND user_id = 23101), 2::bigint, 'repeat qualifying moves increment interaction_count');
 SELECT is((SELECT shared_geokrety_count FROM stats.user_related_users WHERE user_id = 23101 AND related_user_id = 23102), 1::bigint, 'shared_geokrety_count stays distinct-GK based');
 
-INSERT INTO gk_moves (id, geokret, author, position, moved_on_datetime, move_type)
-VALUES (23113, 23102, 23103, coords2position(48.20820, 16.37380), '2020-09-02 10:00:00+00', 2);
+INSERT INTO gk_moves (id, geokret, author, moved_on_datetime, move_type)
+VALUES (23113, 23102, 23103, '2020-09-02 10:00:00+00', 2);
 
 SELECT is((SELECT COUNT(*)::bigint FROM stats.gk_related_users WHERE geokrety_id = 23102 AND user_id = 23103), 0::bigint, 'comment moves do not create relations');
 
@@ -47,7 +47,8 @@ VALUES (23114, 23103, 'relation-anon', coords2position(48.85660, 2.35220), '2020
 SELECT is((SELECT COUNT(*)::bigint FROM stats.gk_related_users WHERE geokrety_id = 23103), 0::bigint, 'anonymous moves do not create relations');
 
 UPDATE gk_moves
-SET move_type = 2
+SET move_type = 2,
+    position = NULL
 WHERE id = 23111;
 
 SELECT is((SELECT COUNT(*)::bigint FROM stats.gk_related_users WHERE geokrety_id = 23101 AND user_id = 23102), 0::bigint, 'update to a non-qualifying move removes the GK-user relation');

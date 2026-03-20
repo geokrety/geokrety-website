@@ -20,7 +20,7 @@ VALUES
 INSERT INTO gk_moves (id, geokret, author, waypoint, country, position, moved_on_datetime, move_type)
 VALUES
   (25420, 25410, 25401, 'GC254A', 'pl', coords2position(52.22968, 21.01223), '2026-01-01 10:00:00+00', 0),
-  (25421, 25410, 25402, NULL, 'de', coords2position(52.52000, 13.40500), '2026-01-02 10:00:00+00', 1),
+  (25421, 25410, 25402, NULL, 'de', coords2position(52.52000, 13.40500), '2026-01-02 10:00:00+00', 3),
   (25422, 25411, 25402, NULL, NULL, NULL, '2026-01-03 10:00:00+00', 2);
 
 INSERT INTO gk_pictures (id, geokret, move, "user", type, filename, uploaded_on_datetime)
