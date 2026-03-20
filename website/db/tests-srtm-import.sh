@@ -14,8 +14,8 @@ cleanup() {
 
 mkdir -p "$SRTM_DIR"
 
-#echo "Getting SRTM Files…"
-#wget -4 -xnH -c -i "$DIR/tests-srtm-import.txt" -P "$SRTM_DIR"
+echo "Getting SRTM Files…"
+wget -4 -xnH -c -i "$DIR/tests-srtm-import.txt" -P "$SRTM_DIR"
 
 echo "Generating SQL import file"
 # Ensure the postgis function are found from the public schema
