@@ -15,7 +15,8 @@ runs:
     - name: Cache SRTM data
       uses: actions/cache@v5
       with:
-        path: ./website/db/srtm/*.zip
+        # eg: path: /home/runner/work/geokrety-website/geokrety-website/website/db/srtm/Eurasia/N43E006.hgt.zip
+        path: ./website/db/srtm/
         key: srtm-cache
         restore-keys: |
           srtm-cache
