@@ -61,7 +61,7 @@ class Waypoint {
     }
 
     protected function checkCharacters(?string $waypoint) {
-        if (is_null($waypoint) || preg_match('/[^A-Za-z0-9]+/', $waypoint)) {
+        if (is_null($waypoint) || preg_match('/[^A-Za-z0-9]+/', $waypoint) === 0) {
             return true;
         }
         $this->errors[] = _('Waypoint contains invalid characters.');
@@ -106,8 +106,8 @@ class Waypoint {
                 return false;
             }
             $wpt->waypoint = $waypoint;
-            $wpt->lat = $coordinates[0];
-            $wpt->lon = $coordinates[1];
+            $wpt->lat = $coords[0];
+            $wpt->lon = $coords[1];
         }
 
         return true;
