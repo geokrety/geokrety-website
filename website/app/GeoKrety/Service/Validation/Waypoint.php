@@ -60,8 +60,8 @@ class Waypoint {
         return true;
     }
 
-    protected function checkCharacters($waypoint) {
-        if (!is_null($waypoint) && !preg_match('/[^A-Za-z0-9]+/', $waypoint)) {
+    protected function checkCharacters(?string $waypoint) {
+        if (is_null($waypoint) || preg_match('/[^A-Za-z0-9]+/', $waypoint)) {
             return true;
         }
         $this->errors[] = _('Waypoint contains invalid characters.');
@@ -69,7 +69,12 @@ class Waypoint {
         return false;
     }
 
-    protected function checkIsInDatabase($waypoint, $coordinates) {
+    protected function checkIsInDatabase(?string $waypoint, $coordinates) {
+        if (is_null($waypoint)) {
+            $this->waypoint = new WaypointGCModel();
+
+            return;
+        }
         if (WaypointInfo::isGC($waypoint)) {
             $this->waypoint = new WaypointGCModel();
         } else {
