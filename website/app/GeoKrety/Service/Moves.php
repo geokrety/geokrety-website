@@ -39,6 +39,8 @@ class Moves {
      */
     public function toMoves(array $move_data, Move $move): array {
         $errors = [];
+        $hasWaypoint = trim((string) ($move_data['waypoint'] ?? '')) !== '';
+        $hasCoordinates = trim((string) ($move_data['coordinates'] ?? '')) !== '';
 
         $move->move_type = $move_data['logtype'];
         if ($this->f3->get('SESSION.CURRENT_USER')) {
@@ -71,9 +73,7 @@ class Moves {
             }
         }
 
-        if ($move->move_type->isCoordinatesRequired() && !$move->move_type->isCoordinatesOptional()
-            || $move->move_type->isCoordinatesOptional() && $move_data['waypoint'] != ''
-        ) {
+        if ($move->move_type->isCoordinatesRequired() && !$move->move_type->isCoordinatesOptional()) {
             // Waypoint validation
             $waypointChecker = new WaypointValidation();
             if ($waypointChecker->validate($move_data['waypoint'], $move_data['coordinates'])) {
@@ -94,6 +94,34 @@ class Moves {
                 }
             } else {
                 $errors = array_merge($errors, $coordChecker->getErrors());
+            }
+        } elseif ($move->move_type->isCoordinatesOptional()) {
+            if ($hasWaypoint) {
+                $waypointChecker = new WaypointValidation();
+                if ($waypointChecker->validate($move_data['waypoint'], $move_data['coordinates'])) {
+                    $move->waypoint = $waypointChecker->getWaypoint()->waypoint;
+                    $move->lat = $waypointChecker->getWaypoint()->lat;
+                    $move->lon = $waypointChecker->getWaypoint()->lon;
+                } else {
+                    $errors = array_merge($errors, $waypointChecker->getErrors());
+                }
+            } else {
+                $move->waypoint = null;
+            }
+
+            if ($hasCoordinates) {
+                $coordChecker = new CoordinatesValidation();
+                if ($coordChecker->validate($move_data['coordinates'])) {
+                    if ($move->lat != $coordChecker->getLat() || $move->lon != $coordChecker->getLon()) {
+                        $move->lat = $coordChecker->getLat();
+                        $move->lon = $coordChecker->getLon();
+                    }
+                } else {
+                    $errors = array_merge($errors, $coordChecker->getErrors());
+                }
+            } elseif (!$hasWaypoint) {
+                $move->lat = null;
+                $move->lon = null;
             }
         } else {
             // Reset values if no coordinates are required, else the validator will complain

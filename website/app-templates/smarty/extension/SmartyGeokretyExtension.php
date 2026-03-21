@@ -310,6 +310,13 @@ EOT;
             return '';
         }
 
+        // If move was logged at author's home with no waypoint, display "home" (localized) without any location data or link
+        // If move was logged at author's home but has a waypoint, continue to normal waypoint logic
+        // Note: This is only triggered for move types that require coordinates; other types return '' above
+        if ($move->logged_at_author_home && empty($move->waypoint)) {
+            return _('home');
+        }
+
         $target = sprintf(' target="%s"', $target);
 
         // No waypoint → fallback to coordinates as link text
