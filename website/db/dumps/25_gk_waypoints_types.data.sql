@@ -1,11 +1,12 @@
+TRUNCATE geokrety.gk_waypoints_types CASCADE;
 --
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2 (Debian 12.2-2.pgdg100+1)
--- Dumped by pg_dump version 12.1
+\restrict 6LtFHhbqYEfWRDsOpcYTop5gcPXVmz3NA7Llh7XDd08H5u6bHA6aWpSyMDm38WS
 
--- Started on 2020-03-31 19:57:42 GMT
+-- Dumped from database version 16.13 (Ubuntu 16.13-1.pgdg24.04+1)
+-- Dumped by pg_dump version 18.3 (Ubuntu 18.3-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,10 +20,12 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 3051 (class 0 OID 21177)
--- Dependencies: 247
--- Data for Name: gk_waypoints_types; Type: TABLE DATA; Schema: geokrety; Owner: geokrety
+-- Data for Name: gk_waypoints_types; Type: TABLE DATA; Schema: geokrety; Owner: -
 --
+
+SET SESSION AUTHORIZATION DEFAULT;
+
+ALTER TABLE geokrety.gk_waypoints_types DISABLE TRIGGER ALL;
 
 COPY geokrety.gk_waypoints_types (type, cache_type) FROM stdin;
 beweglicher Cache	Mobile
@@ -79,9 +82,11 @@ Wydarzenie	Event
 \.
 
 
--- Completed on 2020-03-31 19:57:42 GMT
+ALTER TABLE geokrety.gk_waypoints_types ENABLE TRIGGER ALL;
 
 --
 -- PostgreSQL database dump complete
 --
+
+\unrestrict 6LtFHhbqYEfWRDsOpcYTop5gcPXVmz3NA7Llh7XDd08H5u6bHA6aWpSyMDm38WS
 

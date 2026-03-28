@@ -2,8 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
--- Dumped by pg_dump version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
+\restrict qdbhaU57nzUcceJ9KnkdtrCvKv5OsEE4wE5XNky96JgCsaro4DkebxD9uLd3hn0
+
+-- Dumped from database version 16.13 (Ubuntu 16.13-1.pgdg24.04+1)
+-- Dumped by pg_dump version 18.3 (Ubuntu 18.3-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -178,4 +180,6 @@ CREATE TRIGGER channel_notify AFTER INSERT ON notify_queues.geokrety_changes FOR
 --
 -- PostgreSQL database dump complete
 --
+
+\unrestrict qdbhaU57nzUcceJ9KnkdtrCvKv5OsEE4wE5XNky96JgCsaro4DkebxD9uLd3hn0
 

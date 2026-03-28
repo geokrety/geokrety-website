@@ -2,8 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
--- Dumped by pg_dump version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
+\restrict 767QLRRMhazJKNVmzceXIdKxIxmDD18lBdsWJ9WzAhbzeJbL9wiX5IChLyECTia
+
+-- Dumped from database version 16.13 (Ubuntu 16.13-1.pgdg24.04+1)
+-- Dumped by pg_dump version 18.3 (Ubuntu 18.3-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,7 +22,7 @@ SET row_security = off;
 -- Name: geokrety; Type: SCHEMA; Schema: -; Owner: -
 --
 
-CREATE SCHEMA IF NOT EXISTS geokrety;
+CREATE SCHEMA geokrety;
 
 
 --
@@ -168,6 +170,67 @@ END IF;
 DELETE FROM gk_users
 WHERE id = user_id;
 
+END;
+$$;
+
+
+--
+-- Name: delete_user_setting_if_default(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.delete_user_setting_if_default() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+    _setting_param gk_users_settings_parameters;
+    _typed_value TEXT;
+    _typed_default TEXT;
+BEGIN
+    -- Get the setting parameter definition
+    SELECT * INTO _setting_param
+    FROM gk_users_settings_parameters
+    WHERE name = NEW.name;
+
+    -- If setting doesn't exist, let normal processing continue
+    IF NOT FOUND THEN
+        RETURN NEW;
+    END IF;
+
+    -- Convert both value and default to same type for comparison
+    CASE _setting_param.type
+        WHEN 'bool', 'boolean' THEN
+            -- Convert to boolean representation
+            _typed_value := CASE
+                WHEN LOWER(NEW.value) IN ('true', '1', 't', 'yes', 'y', 'on') THEN 'true'
+                ELSE 'false'
+            END;
+            _typed_default := CASE
+                WHEN LOWER(_setting_param.default) IN ('true', '1', 't', 'yes', 'y', 'on') THEN 'true'
+                ELSE 'false'
+            END;
+        WHEN 'int', 'integer' THEN
+            -- Convert to integer representation
+            _typed_value := CAST(NEW.value AS INTEGER)::TEXT;
+            _typed_default := CAST(_setting_param.default AS INTEGER)::TEXT;
+        ELSE
+            -- String comparison
+            _typed_value := NEW.value;
+            _typed_default := _setting_param.default;
+    END CASE;
+
+    -- If value matches default, handle based on operation type
+    IF _typed_value = _typed_default THEN
+        IF TG_OP = 'INSERT' THEN
+            -- Prevent insert by returning NULL
+            RETURN NULL;
+        ELSIF TG_OP = 'UPDATE' THEN
+            -- Delete the row
+            DELETE FROM gk_users_settings WHERE id = NEW.id;
+            RETURN NULL;
+        END IF;
+    END IF;
+
+    RETURN NEW;
 END;
 $$;
 
@@ -330,6 +393,1899 @@ $$;
 
 
 --
+-- Name: fn_current_geokret_country(bigint); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_current_geokret_country(p_geokrety_id bigint) RETURNS text
+    LANGUAGE sql STABLE
+    AS $$
+  SELECT CASE
+           WHEN m.country IS NULL OR BTRIM(m.country) = '' THEN NULL
+           ELSE LOWER(BTRIM(m.country))
+         END
+  FROM geokrety.gk_geokrety g
+  LEFT JOIN geokrety.gk_moves m
+    ON m.id = g.last_position
+  WHERE g.id = p_geokrety_id
+$$;
+
+
+--
+-- Name: fn_gk_geokrety_counter(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_geokrety_counter() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_shard INT;
+  v_gk_type INT;
+  v_date DATE;
+BEGIN
+  IF TG_OP = 'INSERT' THEN
+    v_shard := NEW.id % 16;
+    v_gk_type := NEW.type;
+    v_date := NEW.created_on_datetime::date;
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_geokrety', v_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+
+    IF v_gk_type BETWEEN 0 AND 10 THEN
+      INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+      VALUES (format('gk_geokrety_type_%s', v_gk_type), v_shard, 1)
+      ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+    END IF;
+
+    PERFORM geokrety.fn_refresh_gk_geokrety_daily_activity_date(v_date);
+    RETURN NULL;
+  END IF;
+
+  v_shard := OLD.id % 16;
+  v_gk_type := OLD.type;
+  v_date := OLD.created_on_datetime::date;
+
+  INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+  VALUES ('gk_geokrety', v_shard, 0)
+  ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+
+  IF v_gk_type BETWEEN 0 AND 10 THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES (format('gk_geokrety_type_%s', v_gk_type), v_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+  END IF;
+
+  PERFORM geokrety.fn_refresh_gk_geokrety_daily_activity_date(v_date);
+  RETURN NULL;
+END;
+$$;
+
+
+--
+-- Name: fn_gk_geokrety_first_finder(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_geokrety_first_finder() RETURNS trigger
+    LANGUAGE plpgsql SECURITY DEFINER
+    AS $$
+BEGIN
+  PERFORM stats.fn_reconcile_first_finder_event(COALESCE(NEW.id, OLD.id));
+
+  RETURN COALESCE(NEW, OLD);
+END;
+$$;
+
+
+--
+-- Name: fn_gk_love_country_at(bigint, timestamp with time zone); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_love_country_at(p_geokrety_id bigint, p_loved_at timestamp with time zone) RETURNS text
+    LANGUAGE plpgsql STABLE
+    AS $$
+DECLARE
+  v_country_code TEXT;
+BEGIN
+  IF p_geokrety_id IS NULL OR p_loved_at IS NULL THEN
+    RETURN NULL;
+  END IF;
+
+  SELECT LOWER(h.country_code::TEXT)
+    INTO v_country_code
+  FROM stats.gk_country_history h
+  WHERE h.geokrety_id = p_geokrety_id
+    AND p_loved_at >= h.arrived_at
+    AND (h.departed_at IS NULL OR p_loved_at < h.departed_at)
+  ORDER BY h.arrived_at DESC
+  LIMIT 1;
+
+  IF v_country_code IS NOT NULL THEN
+    RETURN v_country_code;
+  END IF;
+
+  RETURN geokrety.fn_current_geokret_country(p_geokrety_id);
+END;
+$$;
+
+
+--
+-- Name: fn_gk_loves_activity(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_loves_activity() RETURNS trigger
+    LANGUAGE plpgsql SECURITY DEFINER
+    AS $$
+DECLARE
+  v_old_shard INT;
+  v_new_shard INT;
+  v_old_date DATE;
+  v_new_date DATE;
+  v_old_country TEXT;
+  v_new_country TEXT;
+BEGIN
+  v_old_shard := CASE WHEN TG_OP IN ('UPDATE', 'DELETE') THEN (OLD.id % 16) ELSE NULL END;
+  v_new_shard := CASE WHEN TG_OP IN ('INSERT', 'UPDATE') THEN (NEW.id % 16) ELSE NULL END;
+  v_old_date := CASE WHEN TG_OP IN ('UPDATE', 'DELETE') THEN OLD.created_on_datetime::date ELSE NULL END;
+  v_new_date := CASE WHEN TG_OP IN ('INSERT', 'UPDATE') THEN NEW.created_on_datetime::date ELSE NULL END;
+  v_old_country := CASE WHEN TG_OP IN ('UPDATE', 'DELETE') THEN geokrety.fn_gk_love_country_at(OLD.geokret, OLD.created_on_datetime) ELSE NULL END;
+  v_new_country := CASE WHEN TG_OP IN ('INSERT', 'UPDATE') THEN geokrety.fn_gk_love_country_at(NEW.geokret, NEW.created_on_datetime) ELSE NULL END;
+
+  IF TG_OP = 'INSERT' THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_loves', v_new_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET
+      cnt = stats.entity_counters_shard.cnt + 1;
+  ELSIF TG_OP = 'DELETE' THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_loves', v_old_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET
+      cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+  ELSIF OLD.id IS DISTINCT FROM NEW.id THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_loves', v_old_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET
+      cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_loves', v_new_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET
+      cnt = stats.entity_counters_shard.cnt + 1;
+  END IF;
+
+  IF TG_OP IN ('UPDATE', 'DELETE') THEN
+    PERFORM geokrety.fn_refresh_gk_loves_daily_activity_date(v_old_date);
+
+    IF v_old_country IS NOT NULL THEN
+      PERFORM geokrety.fn_refresh_gk_loves_country_daily_stats_bucket(v_old_date, v_old_country);
+    END IF;
+  END IF;
+
+  IF TG_OP IN ('INSERT', 'UPDATE') THEN
+    PERFORM geokrety.fn_refresh_gk_loves_daily_activity_date(v_new_date);
+
+    IF v_new_country IS NOT NULL THEN
+      PERFORM geokrety.fn_refresh_gk_loves_country_daily_stats_bucket(v_new_date, v_new_country);
+    END IF;
+  END IF;
+
+  RETURN COALESCE(NEW, OLD);
+END;
+$$;
+
+
+--
+-- Name: fn_gk_moves_country_history(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_moves_country_history() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF TG_OP IN ('UPDATE', 'DELETE') THEN
+    PERFORM geokrety.fn_refresh_gk_country_history(OLD.geokret);
+  END IF;
+
+  IF TG_OP IN ('INSERT', 'UPDATE')
+     AND (TG_OP <> 'UPDATE' OR NEW.geokret IS DISTINCT FROM OLD.geokret) THEN
+    PERFORM geokrety.fn_refresh_gk_country_history(NEW.geokret);
+  END IF;
+
+  RETURN NULL;
+END;
+$$;
+
+
+--
+-- Name: fn_gk_moves_country_rollups(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_moves_country_rollups() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_old_date DATE;
+  v_new_date DATE;
+BEGIN
+  v_old_date := CASE WHEN TG_OP IN ('UPDATE', 'DELETE') THEN OLD.moved_on_datetime::date ELSE NULL END;
+  v_new_date := CASE WHEN TG_OP IN ('INSERT', 'UPDATE') THEN NEW.moved_on_datetime::date ELSE NULL END;
+
+  IF TG_OP IN ('UPDATE', 'DELETE') AND OLD.country IS NOT NULL THEN
+    PERFORM geokrety.fn_refresh_country_daily_stats_bucket(v_old_date, OLD.country);
+    PERFORM geokrety.fn_refresh_gk_country_visit(OLD.geokret, OLD.country);
+
+    IF OLD.author IS NOT NULL THEN
+      PERFORM geokrety.fn_refresh_user_country_visit(OLD.author, OLD.country);
+    END IF;
+  END IF;
+
+  IF TG_OP IN ('INSERT', 'UPDATE') AND NEW.country IS NOT NULL THEN
+    IF TG_OP <> 'UPDATE'
+       OR NEW.country IS DISTINCT FROM OLD.country
+       OR v_new_date IS DISTINCT FROM v_old_date THEN
+      PERFORM geokrety.fn_refresh_country_daily_stats_bucket(v_new_date, NEW.country);
+    END IF;
+
+    IF TG_OP <> 'UPDATE'
+       OR NEW.country IS DISTINCT FROM OLD.country
+       OR NEW.geokret IS DISTINCT FROM OLD.geokret THEN
+      PERFORM geokrety.fn_refresh_gk_country_visit(NEW.geokret, NEW.country);
+    END IF;
+
+    IF NEW.author IS NOT NULL
+       AND (
+         TG_OP <> 'UPDATE'
+         OR NEW.country IS DISTINCT FROM OLD.country
+         OR NEW.author IS DISTINCT FROM OLD.author
+       ) THEN
+      PERFORM geokrety.fn_refresh_user_country_visit(NEW.author, NEW.country);
+    END IF;
+  END IF;
+
+  RETURN NULL;
+END;
+$$;
+
+
+--
+-- Name: fn_gk_moves_daily_activity(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_moves_daily_activity() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_old_date DATE;
+  v_new_date DATE;
+  v_activity_date DATE;
+BEGIN
+  IF TG_LEVEL = 'STATEMENT' THEN
+    FOR v_activity_date IN
+      SELECT DISTINCT activity_date
+      FROM (
+        SELECT o.moved_on_datetime::date AS activity_date
+        FROM old_moves o
+        JOIN new_moves n USING (id)
+        WHERE o.moved_on_datetime IS DISTINCT FROM n.moved_on_datetime
+           OR o.move_type IS DISTINCT FROM n.move_type
+           OR o.km_distance IS DISTINCT FROM n.km_distance
+           OR o.author IS DISTINCT FROM n.author
+
+        UNION
+
+        SELECT n.moved_on_datetime::date AS activity_date
+        FROM old_moves o
+        JOIN new_moves n USING (id)
+        WHERE o.moved_on_datetime IS DISTINCT FROM n.moved_on_datetime
+           OR o.move_type IS DISTINCT FROM n.move_type
+           OR o.km_distance IS DISTINCT FROM n.km_distance
+           OR o.author IS DISTINCT FROM n.author
+      ) AS affected_dates
+      WHERE activity_date IS NOT NULL
+    LOOP
+      PERFORM geokrety.fn_refresh_gk_moves_daily_activity_date(v_activity_date);
+      PERFORM geokrety.fn_refresh_daily_active_users_date(v_activity_date);
+    END LOOP;
+
+    RETURN NULL;
+  END IF;
+
+  v_old_date := CASE WHEN TG_OP IN ('UPDATE', 'DELETE') THEN OLD.moved_on_datetime::date ELSE NULL END;
+  v_new_date := CASE WHEN TG_OP IN ('INSERT', 'UPDATE') THEN NEW.moved_on_datetime::date ELSE NULL END;
+
+  IF TG_OP = 'DELETE' THEN
+    PERFORM geokrety.fn_refresh_gk_moves_daily_activity_date(v_old_date);
+    PERFORM geokrety.fn_refresh_daily_active_users_date(v_old_date);
+    RETURN NULL;
+  END IF;
+
+  IF TG_OP = 'INSERT' THEN
+    PERFORM geokrety.fn_refresh_gk_moves_daily_activity_date(v_new_date);
+    PERFORM geokrety.fn_refresh_daily_active_users_date(v_new_date);
+    RETURN NULL;
+  END IF;
+
+  IF TG_OP = 'UPDATE'
+     AND OLD.moved_on_datetime IS NOT DISTINCT FROM NEW.moved_on_datetime
+     AND OLD.move_type IS NOT DISTINCT FROM NEW.move_type
+     AND OLD.km_distance IS NOT DISTINCT FROM NEW.km_distance
+     AND OLD.author IS NOT DISTINCT FROM NEW.author THEN
+    RETURN NULL;
+  END IF;
+
+  PERFORM geokrety.fn_refresh_gk_moves_daily_activity_date(v_old_date);
+  PERFORM geokrety.fn_refresh_daily_active_users_date(v_old_date);
+
+  IF v_new_date IS DISTINCT FROM v_old_date THEN
+    PERFORM geokrety.fn_refresh_gk_moves_daily_activity_date(v_new_date);
+    PERFORM geokrety.fn_refresh_daily_active_users_date(v_new_date);
+  END IF;
+
+  RETURN NULL;
+END;
+$$;
+
+
+--
+-- Name: fn_gk_moves_emit_points_event(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_moves_emit_points_event() RETURNS trigger
+    LANGUAGE plpgsql SECURITY DEFINER
+    AS $$
+BEGIN
+  INSERT INTO notify_queues.geokrety_changes (
+    channel,
+    action,
+    payload
+  )
+  VALUES (
+    'points-awarder',
+    'gk_move_created',
+    NEW.id
+  );
+
+  RETURN NEW;
+END;
+$$;
+
+
+--
+-- Name: fn_gk_moves_first_finder(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_moves_first_finder() RETURNS trigger
+    LANGUAGE plpgsql SECURITY DEFINER
+    AS $$
+DECLARE
+  v_first_gk_id BIGINT;
+  v_second_gk_id BIGINT;
+BEGIN
+  IF TG_OP = 'INSERT' THEN
+    PERFORM stats.fn_detect_first_finder(
+      NEW.geokret,
+      NEW.id,
+      NEW.author,
+      NEW.move_type,
+      NEW.moved_on_datetime
+    );
+
+    RETURN NEW;
+  END IF;
+
+  IF TG_OP = 'DELETE' THEN
+    PERFORM stats.fn_reconcile_first_finder_event(OLD.geokret);
+    RETURN OLD;
+  END IF;
+
+  IF OLD.geokret IS DISTINCT FROM NEW.geokret THEN
+    v_first_gk_id := LEAST(OLD.geokret, NEW.geokret);
+    v_second_gk_id := GREATEST(OLD.geokret, NEW.geokret);
+
+    PERFORM stats.fn_reconcile_first_finder_event(v_first_gk_id);
+    PERFORM stats.fn_reconcile_first_finder_event(v_second_gk_id);
+
+    RETURN NEW;
+  END IF;
+
+  PERFORM stats.fn_reconcile_first_finder_event(NEW.geokret);
+
+  RETURN NEW;
+END;
+$$;
+
+
+--
+-- Name: fn_gk_moves_milestones(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_moves_milestones() RETURNS trigger
+    LANGUAGE plpgsql SECURITY DEFINER
+    AS $$
+DECLARE
+  v_total_km NUMERIC := 0;
+  v_previous_km NUMERIC := 0;
+  v_related_user_count BIGINT := 0;
+  v_previous_related_user_count BIGINT := 0;
+BEGIN
+  IF NEW.move_type IN (0, 1, 3, 5) THEN
+    SELECT COALESCE(SUM(COALESCE(km_distance, 0)), 0)::NUMERIC
+      INTO v_total_km
+    FROM geokrety.gk_moves
+    WHERE geokret = NEW.geokret
+      AND move_type IN (0, 1, 3, 5);
+
+    v_previous_km := v_total_km - COALESCE(NEW.km_distance, 0);
+
+    IF v_previous_km < 100 AND v_total_km >= 100 THEN
+      PERFORM geokrety.fn_record_gk_milestone_event(NEW.geokret::INT, 'km_100', 100, NEW.moved_on_datetime, NEW.id, NEW.author);
+    END IF;
+
+    IF v_previous_km < 1000 AND v_total_km >= 1000 THEN
+      PERFORM geokrety.fn_record_gk_milestone_event(NEW.geokret::INT, 'km_1000', 1000, NEW.moved_on_datetime, NEW.id, NEW.author);
+    END IF;
+
+    IF v_previous_km < 10000 AND v_total_km >= 10000 THEN
+      PERFORM geokrety.fn_record_gk_milestone_event(NEW.geokret::INT, 'km_10000', 10000, NEW.moved_on_datetime, NEW.id, NEW.author);
+    END IF;
+
+    IF NEW.author IS NOT NULL THEN
+      SELECT COUNT(DISTINCT author)::BIGINT
+        INTO v_related_user_count
+      FROM geokrety.gk_moves
+      WHERE geokret = NEW.geokret
+        AND author IS NOT NULL
+        AND move_type IN (0, 1, 3, 5);
+
+      SELECT COUNT(DISTINCT author)::BIGINT
+        INTO v_previous_related_user_count
+      FROM geokrety.gk_moves
+      WHERE geokret = NEW.geokret
+        AND author IS NOT NULL
+        AND move_type IN (0, 1, 3, 5)
+        AND id <> NEW.id;
+
+      IF v_previous_related_user_count < 10 AND v_related_user_count >= 10 THEN
+        PERFORM geokrety.fn_record_gk_milestone_event(NEW.geokret::INT, 'users_10', 10, NEW.moved_on_datetime, NEW.id, NEW.author);
+      END IF;
+
+      IF v_previous_related_user_count < 50 AND v_related_user_count >= 50 THEN
+        PERFORM geokrety.fn_record_gk_milestone_event(NEW.geokret::INT, 'users_50', 50, NEW.moved_on_datetime, NEW.id, NEW.author);
+      END IF;
+
+      IF v_previous_related_user_count < 100 AND v_related_user_count >= 100 THEN
+        PERFORM geokrety.fn_record_gk_milestone_event(NEW.geokret::INT, 'users_100', 100, NEW.moved_on_datetime, NEW.id, NEW.author);
+      END IF;
+    END IF;
+  END IF;
+
+  RETURN NEW;
+END;
+$$;
+
+
+--
+-- Name: fn_gk_moves_relations(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_moves_relations() RETURNS trigger
+    LANGUAGE plpgsql SECURITY DEFINER
+    AS $$
+DECLARE
+  v_geokrety_ids INT[] := ARRAY[]::INT[];
+  v_user_ids INT[] := ARRAY[]::INT[];
+BEGIN
+  IF TG_OP IN ('UPDATE', 'DELETE')
+     AND OLD.author IS NOT NULL
+     AND OLD.move_type IN (0, 1, 3, 5) THEN
+    v_geokrety_ids := array_append(v_geokrety_ids, OLD.geokret);
+    v_user_ids := array_append(v_user_ids, OLD.author);
+  END IF;
+
+  IF TG_OP IN ('INSERT', 'UPDATE')
+     AND NEW.author IS NOT NULL
+     AND NEW.move_type IN (0, 1, 3, 5) THEN
+    v_geokrety_ids := array_append(v_geokrety_ids, NEW.geokret);
+    v_user_ids := array_append(v_user_ids, NEW.author);
+  END IF;
+
+  SELECT array_agg(DISTINCT geokrety_id)
+    INTO v_geokrety_ids
+  FROM unnest(v_geokrety_ids) AS affected_geokrety(geokrety_id);
+
+  IF v_geokrety_ids IS NULL OR cardinality(v_geokrety_ids) = 0 THEN
+    RETURN COALESCE(NEW, OLD);
+  END IF;
+
+  -- Serialize live reconciliation with scoped/full snapshot relation rebuilds.
+  PERFORM pg_advisory_xact_lock(20260321, 1);
+
+  DELETE FROM stats.gk_related_users
+  WHERE geokrety_id = ANY(v_geokrety_ids);
+
+  INSERT INTO stats.gk_related_users (
+    geokrety_id,
+    user_id,
+    interaction_count,
+    first_interaction,
+    last_interaction
+  )
+  SELECT
+    m.geokret,
+    m.author,
+    COUNT(*)::BIGINT,
+    MIN(m.moved_on_datetime),
+    MAX(m.moved_on_datetime)
+  FROM geokrety.gk_moves m
+  WHERE m.geokret = ANY(v_geokrety_ids)
+    AND m.author IS NOT NULL
+    AND m.move_type IN (0, 1, 3, 5)
+  GROUP BY m.geokret, m.author;
+
+  SELECT array_agg(DISTINCT user_id)
+    INTO v_user_ids
+  FROM (
+    SELECT unnest(v_user_ids) AS user_id
+    UNION
+    SELECT gru.user_id
+    FROM stats.gk_related_users gru
+    WHERE gru.geokrety_id = ANY(v_geokrety_ids)
+  ) AS affected_users;
+
+  IF v_user_ids IS NOT NULL AND cardinality(v_user_ids) > 0 THEN
+    DELETE FROM stats.user_related_users
+    WHERE user_id = ANY(v_user_ids)
+       OR related_user_id = ANY(v_user_ids);
+
+    INSERT INTO stats.user_related_users (
+      user_id,
+      related_user_id,
+      shared_geokrety_count,
+      first_seen_at,
+      last_seen_at
+    )
+    SELECT
+      left_side.user_id,
+      right_side.user_id AS related_user_id,
+      COUNT(DISTINCT left_side.geokrety_id)::BIGINT,
+      MIN(LEAST(left_side.first_interaction, right_side.first_interaction)),
+      MAX(GREATEST(left_side.last_interaction, right_side.last_interaction))
+    FROM stats.gk_related_users left_side
+    JOIN stats.gk_related_users right_side
+      ON right_side.geokrety_id = left_side.geokrety_id
+     AND right_side.user_id <> left_side.user_id
+    WHERE left_side.user_id = ANY(v_user_ids)
+       OR right_side.user_id = ANY(v_user_ids)
+    GROUP BY left_side.user_id, right_side.user_id;
+  END IF;
+
+  RETURN COALESCE(NEW, OLD);
+END;
+$$;
+
+
+--
+-- Name: fn_gk_moves_set_logged_at_author_home(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_moves_set_logged_at_author_home() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_home_position public.geography;
+BEGIN
+  IF TG_OP = 'UPDATE'
+     AND NEW.author IS NOT DISTINCT FROM OLD.author
+     AND NEW.position IS NOT DISTINCT FROM OLD.position
+     AND NEW.logged_at_author_home IS NOT DISTINCT FROM OLD.logged_at_author_home THEN
+    RETURN NEW;
+  END IF;
+
+  NEW.logged_at_author_home := false;
+
+  IF NEW.author IS NULL OR NEW.position IS NULL THEN
+    RETURN NEW;
+  END IF;
+
+  SELECT u.home_position
+  INTO v_home_position
+  FROM geokrety.gk_users u
+  WHERE u.id = NEW.author;
+
+  IF v_home_position IS NULL THEN
+    RETURN NEW;
+  END IF;
+
+  NEW.logged_at_author_home := public.ST_DWithin(
+    NEW.position,
+    v_home_position,
+    50
+  );
+
+  RETURN NEW;
+END;
+$$;
+
+
+--
+-- Name: fn_gk_moves_sharded_counter(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_moves_sharded_counter() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_old_shard INT;
+  v_new_shard INT;
+  v_old_type_entity TEXT;
+  v_new_type_entity TEXT;
+BEGIN
+  v_old_shard := CASE WHEN TG_OP IN ('UPDATE', 'DELETE') THEN (OLD.id % 16) ELSE NULL END;
+  v_new_shard := CASE WHEN TG_OP IN ('INSERT', 'UPDATE') THEN (NEW.id % 16) ELSE NULL END;
+  v_old_type_entity := CASE WHEN TG_OP IN ('UPDATE', 'DELETE') THEN format('gk_moves_type_%s', OLD.move_type) ELSE NULL END;
+  v_new_type_entity := CASE WHEN TG_OP IN ('INSERT', 'UPDATE') THEN format('gk_moves_type_%s', NEW.move_type) ELSE NULL END;
+
+  IF TG_OP = 'INSERT' THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_moves', v_new_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES (v_new_type_entity, v_new_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+
+    RETURN NEW;
+  END IF;
+
+  IF TG_OP = 'DELETE' THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_moves', v_old_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES (v_old_type_entity, v_old_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+
+    RETURN OLD;
+  END IF;
+
+  IF (OLD.id, OLD.move_type) = (NEW.id, NEW.move_type) THEN
+    RETURN NEW;
+  END IF;
+
+  IF OLD.id <> NEW.id THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_moves', v_old_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_moves', v_new_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+  END IF;
+
+  IF OLD.id <> NEW.id OR OLD.move_type <> NEW.move_type THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES (v_old_type_entity, v_old_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES (v_new_type_entity, v_new_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+  END IF;
+
+  RETURN NEW;
+END;
+$$;
+
+
+--
+-- Name: fn_gk_moves_waypoint_cache(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_moves_waypoint_cache() RETURNS trigger
+    LANGUAGE plpgsql SECURITY DEFINER
+    AS $$
+DECLARE
+  v_waypoint_id BIGINT;
+  v_waypoint_code TEXT;
+BEGIN
+  IF TG_OP IN ('UPDATE', 'DELETE')
+     AND OLD.move_type <> 2
+     AND OLD.waypoint IS NOT NULL
+     AND BTRIM(OLD.waypoint) <> '' THEN
+    v_waypoint_code := UPPER(BTRIM(OLD.waypoint));
+
+    SELECT id
+      INTO v_waypoint_id
+    FROM stats.waypoints
+    WHERE waypoint_code = v_waypoint_code;
+
+    IF v_waypoint_id IS NOT NULL THEN
+      DELETE FROM stats.gk_cache_visits
+      WHERE gk_id = OLD.geokret
+        AND waypoint_id = v_waypoint_id;
+
+      INSERT INTO stats.gk_cache_visits (
+        gk_id,
+        waypoint_id,
+        visit_count,
+        first_visited_at,
+        last_visited_at
+      )
+      SELECT
+        OLD.geokret,
+        v_waypoint_id,
+        COUNT(*)::BIGINT,
+        MIN(m.moved_on_datetime),
+        MAX(m.moved_on_datetime)
+      FROM geokrety.gk_moves m
+      WHERE m.geokret = OLD.geokret
+        AND m.move_type <> 2
+        AND m.waypoint IS NOT NULL
+        AND BTRIM(m.waypoint) <> ''
+        AND UPPER(BTRIM(m.waypoint)) = v_waypoint_code
+      GROUP BY OLD.geokret;
+
+      IF OLD.author IS NOT NULL THEN
+        DELETE FROM stats.user_cache_visits
+        WHERE user_id = OLD.author
+          AND waypoint_id = v_waypoint_id;
+
+        INSERT INTO stats.user_cache_visits (
+          user_id,
+          waypoint_id,
+          visit_count,
+          first_visited_at,
+          last_visited_at
+        )
+        SELECT
+          OLD.author,
+          v_waypoint_id,
+          COUNT(*)::BIGINT,
+          MIN(m.moved_on_datetime),
+          MAX(m.moved_on_datetime)
+        FROM geokrety.gk_moves m
+        WHERE m.author = OLD.author
+          AND m.move_type <> 2
+          AND m.waypoint IS NOT NULL
+          AND BTRIM(m.waypoint) <> ''
+          AND UPPER(BTRIM(m.waypoint)) = v_waypoint_code
+        GROUP BY OLD.author;
+      END IF;
+    END IF;
+  END IF;
+
+  IF TG_OP IN ('INSERT', 'UPDATE')
+     AND NEW.move_type <> 2
+     AND NEW.waypoint IS NOT NULL
+     AND BTRIM(NEW.waypoint) <> '' THEN
+    v_waypoint_code := UPPER(BTRIM(NEW.waypoint));
+
+    INSERT INTO stats.waypoints (
+      waypoint_code,
+      source,
+      lat,
+      lon,
+      country,
+      first_seen_at
+    )
+    VALUES (
+      v_waypoint_code,
+      'UK',
+      CASE
+        WHEN NEW.position IS NULL THEN NULL
+        ELSE public.ST_Y(NEW.position::public.geometry)::DOUBLE PRECISION
+      END,
+      CASE
+        WHEN NEW.position IS NULL THEN NULL
+        ELSE public.ST_X(NEW.position::public.geometry)::DOUBLE PRECISION
+      END,
+      CASE
+        WHEN NEW.country IS NULL OR BTRIM(NEW.country) = '' THEN NULL
+        ELSE UPPER(BTRIM(NEW.country))::CHAR(2)
+      END,
+      NEW.moved_on_datetime
+    )
+    ON CONFLICT (waypoint_code) DO UPDATE SET
+      lat = COALESCE(stats.waypoints.lat, EXCLUDED.lat),
+      lon = COALESCE(stats.waypoints.lon, EXCLUDED.lon),
+      country = COALESCE(stats.waypoints.country, EXCLUDED.country),
+      first_seen_at = LEAST(stats.waypoints.first_seen_at, EXCLUDED.first_seen_at)
+    RETURNING id INTO v_waypoint_id;
+
+    DELETE FROM stats.gk_cache_visits
+    WHERE gk_id = NEW.geokret
+      AND waypoint_id = v_waypoint_id;
+
+    INSERT INTO stats.gk_cache_visits (
+      gk_id,
+      waypoint_id,
+      visit_count,
+      first_visited_at,
+      last_visited_at
+    )
+    SELECT
+      NEW.geokret,
+      v_waypoint_id,
+      COUNT(*)::BIGINT,
+      MIN(m.moved_on_datetime),
+      MAX(m.moved_on_datetime)
+    FROM geokrety.gk_moves m
+    WHERE m.geokret = NEW.geokret
+      AND m.move_type <> 2
+      AND m.waypoint IS NOT NULL
+      AND BTRIM(m.waypoint) <> ''
+      AND UPPER(BTRIM(m.waypoint)) = v_waypoint_code
+    GROUP BY NEW.geokret;
+
+    IF NEW.author IS NOT NULL THEN
+      DELETE FROM stats.user_cache_visits
+      WHERE user_id = NEW.author
+        AND waypoint_id = v_waypoint_id;
+
+      INSERT INTO stats.user_cache_visits (
+        user_id,
+        waypoint_id,
+        visit_count,
+        first_visited_at,
+        last_visited_at
+      )
+      SELECT
+        NEW.author,
+        v_waypoint_id,
+        COUNT(*)::BIGINT,
+        MIN(m.moved_on_datetime),
+        MAX(m.moved_on_datetime)
+      FROM geokrety.gk_moves m
+      WHERE m.author = NEW.author
+        AND m.move_type <> 2
+        AND m.waypoint IS NOT NULL
+        AND BTRIM(m.waypoint) <> ''
+        AND UPPER(BTRIM(m.waypoint)) = v_waypoint_code
+      GROUP BY NEW.author;
+    END IF;
+  END IF;
+
+  RETURN COALESCE(NEW, OLD);
+END;
+$$;
+
+
+--
+-- Name: fn_gk_pictures_counter(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_pictures_counter() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_old_shard INT;
+  v_new_shard INT;
+  v_old_date DATE;
+  v_new_date DATE;
+  v_old_type_entity TEXT;
+  v_new_type_entity TEXT;
+  v_old_active BOOLEAN;
+  v_new_active BOOLEAN;
+BEGIN
+  v_old_shard := CASE WHEN TG_OP IN ('UPDATE', 'DELETE') THEN (OLD.id % 16) ELSE NULL END;
+  v_new_shard := CASE WHEN TG_OP IN ('INSERT', 'UPDATE') THEN (NEW.id % 16) ELSE NULL END;
+  v_old_active := TG_OP IN ('UPDATE', 'DELETE') AND OLD.uploaded_on_datetime IS NOT NULL;
+  v_new_active := TG_OP IN ('INSERT', 'UPDATE') AND NEW.uploaded_on_datetime IS NOT NULL;
+  v_old_date := CASE WHEN v_old_active THEN OLD.uploaded_on_datetime::date ELSE NULL END;
+  v_new_date := CASE WHEN v_new_active THEN NEW.uploaded_on_datetime::date ELSE NULL END;
+  v_old_type_entity := CASE WHEN TG_OP IN ('UPDATE', 'DELETE') THEN format('gk_pictures_type_%s', OLD.type) ELSE NULL END;
+  v_new_type_entity := CASE WHEN TG_OP IN ('INSERT', 'UPDATE') THEN format('gk_pictures_type_%s', NEW.type) ELSE NULL END;
+
+  IF TG_OP = 'INSERT' THEN
+    IF NOT v_new_active THEN
+      RETURN NULL;
+    END IF;
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_pictures', v_new_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES (v_new_type_entity, v_new_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+
+    PERFORM geokrety.fn_refresh_gk_pictures_daily_activity_date(v_new_date);
+    RETURN NULL;
+  END IF;
+
+  IF TG_OP = 'DELETE' THEN
+    IF NOT v_old_active THEN
+      RETURN NULL;
+    END IF;
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_pictures', v_old_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES (v_old_type_entity, v_old_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+
+    PERFORM geokrety.fn_refresh_gk_pictures_daily_activity_date(v_old_date);
+    RETURN NULL;
+  END IF;
+
+  IF (OLD.id, OLD.type, OLD.uploaded_on_datetime::date) IS NOT DISTINCT FROM (NEW.id, NEW.type, NEW.uploaded_on_datetime::date)
+     AND v_old_active = v_new_active THEN
+    RETURN NULL;
+  END IF;
+
+  IF v_old_active AND (NOT v_new_active OR OLD.id <> NEW.id) THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_pictures', v_old_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+  END IF;
+
+  IF v_new_active AND (NOT v_old_active OR OLD.id <> NEW.id) THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_pictures', v_new_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+  END IF;
+
+  IF v_old_active AND (NOT v_new_active OR OLD.id <> NEW.id OR OLD.type <> NEW.type) THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES (v_old_type_entity, v_old_shard, 0)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+  END IF;
+
+  IF v_new_active AND (NOT v_old_active OR OLD.id <> NEW.id OR OLD.type <> NEW.type) THEN
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES (v_new_type_entity, v_new_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+  END IF;
+
+  IF v_old_active AND (NOT v_new_active OR OLD.type IS DISTINCT FROM NEW.type OR v_old_date IS DISTINCT FROM v_new_date) THEN
+    PERFORM geokrety.fn_refresh_gk_pictures_daily_activity_date(v_old_date);
+  END IF;
+
+  IF v_new_active AND (NOT v_old_active OR OLD.type IS DISTINCT FROM NEW.type OR v_new_date IS DISTINCT FROM v_old_date) THEN
+    PERFORM geokrety.fn_refresh_gk_pictures_daily_activity_date(v_new_date);
+  END IF;
+
+  RETURN NULL;
+END;
+$$;
+
+
+--
+-- Name: fn_gk_users_counter(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_gk_users_counter() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_shard INT;
+  v_date DATE;
+BEGIN
+  IF TG_OP = 'INSERT' THEN
+    v_shard := NEW.id % 16;
+    v_date := NEW.joined_on_datetime::date;
+
+    INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+    VALUES ('gk_users', v_shard, 1)
+    ON CONFLICT (entity, shard) DO UPDATE SET cnt = stats.entity_counters_shard.cnt + 1;
+
+    PERFORM geokrety.fn_refresh_gk_users_daily_activity_date(v_date);
+    RETURN NULL;
+  END IF;
+
+  v_shard := OLD.id % 16;
+  v_date := OLD.joined_on_datetime::date;
+
+  INSERT INTO stats.entity_counters_shard (entity, shard, cnt)
+  VALUES ('gk_users', v_shard, 0)
+  ON CONFLICT (entity, shard) DO UPDATE SET cnt = GREATEST(0, stats.entity_counters_shard.cnt - 1);
+
+  PERFORM geokrety.fn_refresh_gk_users_daily_activity_date(v_date);
+  RETURN NULL;
+END;
+$$;
+
+
+--
+-- Name: fn_normalize_country_code(text); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_normalize_country_code(p_country text) RETURNS character
+    LANGUAGE plpgsql IMMUTABLE STRICT
+    AS $$
+DECLARE
+  v_trimmed TEXT;
+BEGIN
+  IF p_country IS NULL THEN
+    RETURN NULL;
+  END IF;
+
+  v_trimmed := BTRIM(p_country);
+
+  -- If already exactly 2 chars after trim, use it (uppercase)
+  IF LENGTH(v_trimmed) = 2 THEN
+    RETURN UPPER(v_trimmed)::CHAR(2);
+  END IF;
+
+  -- Otherwise, map to 'UK' (unknown)
+  RETURN 'UK'::CHAR(2);
+END;
+$$;
+
+
+--
+-- Name: fn_record_gk_milestone_event(integer, text, numeric, timestamp with time zone, bigint, bigint); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_record_gk_milestone_event(p_gk_id integer, p_event_type text, p_event_value numeric, p_occurred_at timestamp with time zone, p_move_id bigint, p_actor_user_id bigint) RETURNS void
+    LANGUAGE plpgsql SECURITY DEFINER
+    AS $$
+BEGIN
+  INSERT INTO stats.gk_milestone_events (
+    gk_id,
+    event_type,
+    event_value,
+    additional_data,
+    occurred_at
+  )
+  VALUES (
+    p_gk_id,
+    p_event_type,
+    p_event_value,
+    jsonb_strip_nulls(jsonb_build_object(
+      'move_id', p_move_id,
+      'actor_user_id', p_actor_user_id
+    )),
+    p_occurred_at
+  )
+  ON CONFLICT (gk_id, event_type) DO NOTHING;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_country_daily_stats_bucket(date, text); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_country_daily_stats_bucket(p_stats_date date, p_country_code text) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_country_code TEXT;
+BEGIN
+  IF p_stats_date IS NULL OR p_country_code IS NULL THEN
+    RETURN;
+  END IF;
+
+  v_country_code := geokrety.fn_normalize_country_code(p_country_code);
+
+  INSERT INTO stats.country_daily_stats (
+    stats_date,
+    country_code,
+    moves_count,
+    drops,
+    grabs,
+    comments,
+    sees,
+    archives,
+    dips,
+    unique_users,
+    unique_gks,
+    km_contributed
+  )
+  SELECT
+    p_stats_date,
+    v_country_code,
+    COUNT(*)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 0)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 1)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 2)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 3)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 4)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 5)::BIGINT,
+    COUNT(DISTINCT author) FILTER (WHERE author IS NOT NULL)::BIGINT,
+    COUNT(DISTINCT geokret)::BIGINT,
+    COALESCE(SUM(km_distance), 0)::NUMERIC(14,3)
+  FROM geokrety.gk_moves
+  WHERE country IS NOT NULL
+    AND geokrety.fn_normalize_country_code(country) = v_country_code
+    AND moved_on_datetime >= p_stats_date::timestamp with time zone
+    AND moved_on_datetime < (p_stats_date + 1)::timestamp with time zone
+  GROUP BY 1, 2
+  ON CONFLICT (stats_date, country_code) DO UPDATE SET
+    moves_count = EXCLUDED.moves_count,
+    drops = EXCLUDED.drops,
+    grabs = EXCLUDED.grabs,
+    comments = EXCLUDED.comments,
+    sees = EXCLUDED.sees,
+    archives = EXCLUDED.archives,
+    dips = EXCLUDED.dips,
+    unique_users = EXCLUDED.unique_users,
+    unique_gks = EXCLUDED.unique_gks,
+    km_contributed = EXCLUDED.km_contributed;
+
+  IF FOUND THEN
+    RETURN;
+  END IF;
+
+  UPDATE stats.country_daily_stats
+     SET moves_count = 0,
+         drops = 0,
+         grabs = 0,
+         comments = 0,
+         sees = 0,
+         archives = 0,
+         dips = 0,
+         unique_users = 0,
+         unique_gks = 0,
+         km_contributed = 0
+   WHERE stats_date = p_stats_date
+     AND country_code = v_country_code
+     AND (
+       points_contributed <> 0
+       OR loves_count <> 0
+       OR pictures_uploaded_total <> 0
+       OR pictures_uploaded_avatar <> 0
+       OR pictures_uploaded_move <> 0
+       OR pictures_uploaded_user <> 0
+     );
+
+  IF FOUND THEN
+    RETURN;
+  END IF;
+
+  DELETE FROM stats.country_daily_stats
+   WHERE stats_date = p_stats_date
+    AND country_code = v_country_code;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_daily_active_users_date(date); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_daily_active_users_date(p_activity_date date) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF p_activity_date IS NULL THEN
+    RETURN;
+  END IF;
+
+  DELETE FROM stats.daily_active_users
+  WHERE activity_date = p_activity_date;
+
+  INSERT INTO stats.daily_active_users (activity_date, user_id)
+  SELECT
+    p_activity_date,
+    author
+  FROM geokrety.gk_moves
+  WHERE author IS NOT NULL
+    AND moved_on_datetime >= p_activity_date::timestamp with time zone
+    AND moved_on_datetime < (p_activity_date + 1)::timestamp with time zone
+  GROUP BY author;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_gk_country_history(bigint); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_gk_country_history(p_geokrety_id bigint) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF p_geokrety_id IS NULL THEN
+    RETURN;
+  END IF;
+
+  DELETE FROM stats.gk_country_history
+   WHERE geokrety_id = p_geokrety_id;
+
+  INSERT INTO stats.gk_country_history (
+    geokrety_id,
+    country_code,
+    arrived_at,
+    departed_at,
+    move_id
+  )
+  WITH ordered_moves AS (
+    SELECT
+      m.id,
+      m.geokret,
+      geokrety.fn_normalize_country_code(m.country) AS country,
+      m.moved_on_datetime,
+      LAG(geokrety.fn_normalize_country_code(m.country)) OVER (
+        ORDER BY m.moved_on_datetime, m.id
+      ) AS previous_country
+    FROM geokrety.gk_moves m
+    WHERE m.geokret = p_geokrety_id
+      AND m.country IS NOT NULL
+      AND m.move_type IN (0, 1, 3, 5)
+  ),
+  transitions AS (
+    SELECT
+      id,
+      geokret,
+      country,
+      moved_on_datetime,
+      LEAD(moved_on_datetime) OVER (ORDER BY moved_on_datetime, id) AS departed_at
+    FROM ordered_moves
+    WHERE previous_country IS DISTINCT FROM country
+  )
+  SELECT
+    geokret,
+    country,
+    moved_on_datetime,
+    departed_at,
+    id
+  FROM transitions;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_gk_country_visit(bigint, text); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_gk_country_visit(p_geokrety_id bigint, p_country_code text) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_country_code TEXT;
+BEGIN
+  IF p_geokrety_id IS NULL OR p_country_code IS NULL THEN
+    RETURN;
+  END IF;
+
+  v_country_code := geokrety.fn_normalize_country_code(p_country_code);
+
+  INSERT INTO stats.gk_countries_visited (
+    geokrety_id,
+    country_code,
+    first_visited_at,
+    first_move_id,
+    move_count
+  )
+  SELECT
+    p_geokrety_id,
+    v_country_code,
+    MIN(moved_on_datetime),
+    (array_agg(id ORDER BY moved_on_datetime ASC, id ASC))[1],
+    COUNT(*)::INT
+  FROM geokrety.gk_moves
+  WHERE geokret = p_geokrety_id
+    AND country IS NOT NULL
+    AND geokrety.fn_normalize_country_code(country) = v_country_code
+  GROUP BY 1, 2
+  ON CONFLICT (geokrety_id, country_code) DO UPDATE SET
+    first_visited_at = EXCLUDED.first_visited_at,
+    first_move_id = EXCLUDED.first_move_id,
+    move_count = EXCLUDED.move_count;
+
+  IF FOUND THEN
+    RETURN;
+  END IF;
+
+  DELETE FROM stats.gk_countries_visited
+   WHERE geokrety_id = p_geokrety_id
+    AND country_code = v_country_code;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_gk_geokrety_daily_activity_date(date); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_gk_geokrety_daily_activity_date(p_activity_date date) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF p_activity_date IS NULL THEN
+    RETURN;
+  END IF;
+
+  INSERT INTO stats.daily_activity (activity_date, gk_created)
+  SELECT
+    p_activity_date,
+    COUNT(*)::BIGINT
+  FROM geokrety.gk_geokrety
+  WHERE created_on_datetime >= p_activity_date::timestamp with time zone
+    AND created_on_datetime < (p_activity_date + 1)::timestamp with time zone
+  ON CONFLICT (activity_date) DO UPDATE SET
+    gk_created = EXCLUDED.gk_created;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_gk_loves_country_daily_stats_bucket(date, text); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_gk_loves_country_daily_stats_bucket(p_stats_date date, p_country_code text) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_country_code TEXT;
+BEGIN
+  IF p_stats_date IS NULL OR p_country_code IS NULL THEN
+    RETURN;
+  END IF;
+
+  v_country_code := LOWER(BTRIM(p_country_code));
+
+  INSERT INTO stats.country_daily_stats (
+    stats_date,
+    country_code,
+    loves_count
+  )
+  SELECT
+    p_stats_date,
+    v_country_code,
+    COUNT(*)::BIGINT
+  FROM geokrety.gk_loves l
+  WHERE l.created_on_datetime >= p_stats_date::timestamp with time zone
+    AND l.created_on_datetime < (p_stats_date + 1)::timestamp with time zone
+    AND geokrety.fn_gk_love_country_at(l.geokret, l.created_on_datetime) = v_country_code
+  GROUP BY 1, 2
+  ON CONFLICT (stats_date, country_code) DO UPDATE SET
+    loves_count = EXCLUDED.loves_count;
+
+  IF FOUND THEN
+    RETURN;
+  END IF;
+
+  UPDATE stats.country_daily_stats
+     SET loves_count = 0
+   WHERE stats_date = p_stats_date
+     AND country_code = v_country_code
+     AND (
+       moves_count <> 0
+       OR drops <> 0
+       OR grabs <> 0
+       OR comments <> 0
+       OR sees <> 0
+       OR archives <> 0
+       OR dips <> 0
+       OR unique_users <> 0
+       OR unique_gks <> 0
+       OR km_contributed <> 0
+       OR points_contributed <> 0
+       OR pictures_uploaded_total <> 0
+       OR pictures_uploaded_avatar <> 0
+       OR pictures_uploaded_move <> 0
+       OR pictures_uploaded_user <> 0
+     );
+
+  IF FOUND THEN
+    RETURN;
+  END IF;
+
+  DELETE FROM stats.country_daily_stats
+   WHERE stats_date = p_stats_date
+     AND country_code = v_country_code;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_gk_loves_daily_activity_date(date); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_gk_loves_daily_activity_date(p_activity_date date) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF p_activity_date IS NULL THEN
+    RETURN;
+  END IF;
+
+  INSERT INTO stats.daily_activity (
+    activity_date,
+    loves_count
+  )
+  SELECT
+    p_activity_date,
+    COUNT(*)::BIGINT
+  FROM geokrety.gk_loves l
+  WHERE l.created_on_datetime >= p_activity_date::timestamp with time zone
+    AND l.created_on_datetime < (p_activity_date + 1)::timestamp with time zone
+  ON CONFLICT (activity_date) DO UPDATE SET
+    loves_count = EXCLUDED.loves_count;
+
+  IF FOUND THEN
+    RETURN;
+  END IF;
+
+  UPDATE stats.daily_activity
+     SET loves_count = 0
+   WHERE activity_date = p_activity_date;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_gk_moves_daily_activity_date(date); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_gk_moves_daily_activity_date(p_activity_date date) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF p_activity_date IS NULL THEN
+    RETURN;
+  END IF;
+
+  INSERT INTO stats.daily_activity (
+    activity_date,
+    total_moves,
+    drops,
+    grabs,
+    comments,
+    sees,
+    archives,
+    dips,
+    km_contributed
+  )
+  SELECT
+    p_activity_date,
+    COUNT(*)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 0)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 1)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 2)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 3)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 4)::BIGINT,
+    COUNT(*) FILTER (WHERE move_type = 5)::BIGINT,
+    COALESCE(SUM(km_distance), 0)::NUMERIC(14,3)
+  FROM geokrety.gk_moves
+  WHERE moved_on_datetime >= p_activity_date::timestamp with time zone
+    AND moved_on_datetime < (p_activity_date + 1)::timestamp with time zone
+  ON CONFLICT (activity_date) DO UPDATE SET
+    total_moves = EXCLUDED.total_moves,
+    drops = EXCLUDED.drops,
+    grabs = EXCLUDED.grabs,
+    comments = EXCLUDED.comments,
+    sees = EXCLUDED.sees,
+    archives = EXCLUDED.archives,
+    dips = EXCLUDED.dips,
+    km_contributed = EXCLUDED.km_contributed;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_gk_pictures_daily_activity_date(date); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_gk_pictures_daily_activity_date(p_activity_date date) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF p_activity_date IS NULL THEN
+    RETURN;
+  END IF;
+
+  INSERT INTO stats.daily_activity (
+    activity_date,
+    pictures_uploaded_total,
+    pictures_uploaded_avatar,
+    pictures_uploaded_move,
+    pictures_uploaded_user
+  )
+  SELECT
+    p_activity_date,
+    COUNT(*)::BIGINT,
+    COUNT(*) FILTER (WHERE type = 0)::BIGINT,
+    COUNT(*) FILTER (WHERE type = 1)::BIGINT,
+    COUNT(*) FILTER (WHERE type = 2)::BIGINT
+  FROM geokrety.gk_pictures
+  WHERE uploaded_on_datetime IS NOT NULL
+    AND uploaded_on_datetime >= p_activity_date::timestamp with time zone
+    AND uploaded_on_datetime < (p_activity_date + 1)::timestamp with time zone
+  ON CONFLICT (activity_date) DO UPDATE SET
+    pictures_uploaded_total = EXCLUDED.pictures_uploaded_total,
+    pictures_uploaded_avatar = EXCLUDED.pictures_uploaded_avatar,
+    pictures_uploaded_move = EXCLUDED.pictures_uploaded_move,
+    pictures_uploaded_user = EXCLUDED.pictures_uploaded_user;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_gk_users_daily_activity_date(date); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_gk_users_daily_activity_date(p_activity_date date) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF p_activity_date IS NULL THEN
+    RETURN;
+  END IF;
+
+  INSERT INTO stats.daily_activity (activity_date, users_registered)
+  SELECT
+    p_activity_date,
+    COUNT(*)::BIGINT
+  FROM geokrety.gk_users
+  WHERE joined_on_datetime >= p_activity_date::timestamp with time zone
+    AND joined_on_datetime < (p_activity_date + 1)::timestamp with time zone
+  ON CONFLICT (activity_date) DO UPDATE SET
+    users_registered = EXCLUDED.users_registered;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_previous_move_chain(bigint); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_previous_move_chain(p_geokret_id bigint) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF p_geokret_id IS NULL THEN
+    RETURN;
+  END IF;
+
+  PERFORM geokrety.fn_refresh_previous_move_chains(ARRAY[p_geokret_id]);
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_previous_move_chains(bigint[]); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_previous_move_chains(p_geokret_ids bigint[]) RETURNS bigint
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_rows_updated BIGINT := 0;
+BEGIN
+  IF p_geokret_ids IS NULL OR array_length(p_geokret_ids, 1) IS NULL THEN
+    RETURN 0;
+  END IF;
+
+  WITH requested_geokrets AS (
+    SELECT DISTINCT geokret
+    FROM unnest(p_geokret_ids) AS geokret
+    WHERE geokret IS NOT NULL
+  ),
+  base_moves AS (
+    SELECT
+      m.id,
+      m.geokret,
+      m.move_type,
+      m.position,
+      m.moved_on_datetime
+    FROM geokrety.gk_moves m
+    JOIN requested_geokrets rg ON rg.geokret = m.geokret
+  ),
+  qualifying_moves AS (
+    SELECT
+      m.id,
+      m.geokret,
+      row_number() OVER (
+        PARTITION BY m.geokret
+        ORDER BY m.moved_on_datetime, m.id
+      ) AS qualifying_seq
+    FROM base_moves m
+    WHERE m.move_type IN (0, 1, 3, 5)
+  ),
+  positioned_moves AS (
+    SELECT
+      m.id,
+      m.geokret,
+      row_number() OVER (
+        PARTITION BY m.geokret
+        ORDER BY m.moved_on_datetime, m.id
+      ) AS positioned_seq,
+      m.position
+    FROM base_moves m
+    WHERE m.move_type IN (0, 1, 3, 5)
+      AND m.position IS NOT NULL
+  ),
+  chain_state AS (
+    SELECT
+      m.id,
+      m.geokret,
+      m.move_type,
+      m.position,
+      count(*) FILTER (
+        WHERE m.move_type IN (0, 1, 3, 5)
+      ) OVER (
+        PARTITION BY m.geokret
+        ORDER BY m.moved_on_datetime, m.id
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+      ) AS qualifying_seen,
+      count(*) FILTER (
+        WHERE m.move_type IN (0, 1, 3, 5)
+          AND m.position IS NOT NULL
+      ) OVER (
+        PARTITION BY m.geokret
+        ORDER BY m.moved_on_datetime, m.id
+        ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+      ) AS positioned_seen
+    FROM base_moves m
+  ),
+  recomputed AS (
+    SELECT
+      s.id,
+      qm.id AS previous_move_id,
+      pm.id AS previous_position_id,
+      CASE
+        WHEN s.move_type IN (0, 1, 3, 5)
+         AND s.position IS NOT NULL
+         AND pm.position IS NOT NULL
+          THEN (public.ST_Distance(pm.position, s.position) / 1000.0)::NUMERIC(8,3)
+        ELSE NULL
+      END AS km_distance
+    FROM chain_state s
+    LEFT JOIN qualifying_moves qm
+      ON qm.geokret = s.geokret
+     AND qm.qualifying_seq = s.qualifying_seen - CASE WHEN s.move_type IN (0, 1, 3, 5) THEN 1 ELSE 0 END
+    LEFT JOIN positioned_moves pm
+      ON pm.geokret = s.geokret
+     AND pm.positioned_seq = s.positioned_seen - CASE WHEN s.move_type IN (0, 1, 3, 5) AND s.position IS NOT NULL THEN 1 ELSE 0 END
+  )
+  UPDATE geokrety.gk_moves g
+     SET previous_move_id = r.previous_move_id,
+         previous_position_id = r.previous_position_id,
+         km_distance = r.km_distance
+    FROM recomputed r
+   WHERE g.id = r.id
+     AND (
+       g.previous_move_id IS DISTINCT FROM r.previous_move_id
+       OR g.previous_position_id IS DISTINCT FROM r.previous_position_id
+       OR g.km_distance IS DISTINCT FROM r.km_distance
+     );
+
+  GET DIAGNOSTICS v_rows_updated = ROW_COUNT;
+  RETURN v_rows_updated;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_previous_move_ids_after_insert(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_previous_move_ids_after_insert() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF pg_trigger_depth() > 1 THEN
+    RETURN NULL;
+  END IF;
+
+  PERFORM geokrety.fn_refresh_previous_move_chains(
+    ARRAY(
+      SELECT DISTINCT geokret
+      FROM new_moves
+      WHERE geokret IS NOT NULL
+    )
+  );
+
+  RETURN NULL;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_previous_move_ids_after_update(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_previous_move_ids_after_update() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF pg_trigger_depth() > 1 THEN
+    RETURN NULL;
+  END IF;
+
+  IF NOT EXISTS (
+    SELECT 1
+    FROM old_moves o
+    JOIN new_moves n USING (id)
+    WHERE o.geokret IS DISTINCT FROM n.geokret
+       OR o.moved_on_datetime IS DISTINCT FROM n.moved_on_datetime
+       OR o.move_type IS DISTINCT FROM n.move_type
+       OR o.position IS DISTINCT FROM n.position
+       OR o.previous_move_id IS DISTINCT FROM n.previous_move_id
+       OR o.previous_position_id IS DISTINCT FROM n.previous_position_id
+       OR o.km_distance IS DISTINCT FROM n.km_distance
+  ) THEN
+    RETURN NULL;
+  END IF;
+
+  PERFORM geokrety.fn_refresh_previous_move_chains(
+    ARRAY(
+      SELECT DISTINCT geokret
+      FROM (
+        SELECT geokret FROM old_moves
+        UNION
+        SELECT geokret FROM new_moves
+      ) AS affected
+      WHERE geokret IS NOT NULL
+    )
+  );
+
+  RETURN NULL;
+END;
+$$;
+
+
+--
+-- Name: fn_refresh_user_country_visit(bigint, text); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_refresh_user_country_visit(p_user_id bigint, p_country_code text) RETURNS void
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_country_code TEXT;
+BEGIN
+  IF p_user_id IS NULL OR p_country_code IS NULL THEN
+    RETURN;
+  END IF;
+
+  v_country_code := geokrety.fn_normalize_country_code(p_country_code);
+
+  INSERT INTO stats.user_countries (
+    user_id,
+    country_code,
+    move_count,
+    first_visit,
+    last_visit
+  )
+  SELECT
+    p_user_id,
+    v_country_code,
+    COUNT(*)::BIGINT,
+    MIN(moved_on_datetime),
+    MAX(moved_on_datetime)
+  FROM geokrety.gk_moves
+  WHERE author = p_user_id
+    AND country IS NOT NULL
+    AND geokrety.fn_normalize_country_code(country) = v_country_code
+  GROUP BY 1, 2
+  ON CONFLICT (user_id, country_code) DO UPDATE SET
+    move_count = EXCLUDED.move_count,
+    first_visit = EXCLUDED.first_visit,
+    last_visit = EXCLUDED.last_visit;
+
+  IF FOUND THEN
+    RETURN;
+  END IF;
+
+  DELETE FROM stats.user_countries
+   WHERE user_id = p_user_id
+    AND country_code = v_country_code;
+END;
+$$;
+
+
+--
+-- Name: fn_rewire_previous_move_ids_after_delete(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_rewire_previous_move_ids_after_delete() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+  IF pg_trigger_depth() > 1 THEN
+    RETURN NULL;
+  END IF;
+
+  PERFORM geokrety.fn_refresh_previous_move_chains(
+    ARRAY(
+      SELECT DISTINCT geokret
+      FROM deleted_moves
+      WHERE geokret IS NOT NULL
+    )
+  );
+
+  RETURN NULL;
+END;
+$$;
+
+
+--
+-- Name: fn_set_previous_move_id_and_distance(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.fn_set_previous_move_id_and_distance() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+  v_previous_move_id BIGINT;
+  v_previous_position_id BIGINT;
+  v_current_move_id BIGINT;
+  v_move_qualifies BOOLEAN;
+  v_has_position BOOLEAN;
+BEGIN
+  v_current_move_id := COALESCE(NEW.id, 9223372036854775807);
+  v_move_qualifies := NEW.move_type IN (0, 1, 3, 5);
+  v_has_position := NEW.position IS NOT NULL;
+
+  IF TG_OP = 'UPDATE'
+     AND OLD.geokret IS NOT DISTINCT FROM NEW.geokret
+     AND OLD.moved_on_datetime IS NOT DISTINCT FROM NEW.moved_on_datetime
+     AND OLD.move_type IS NOT DISTINCT FROM NEW.move_type
+     AND OLD.position IS NOT DISTINCT FROM NEW.position THEN
+    RETURN NEW;
+  END IF;
+
+  SELECT m.id
+    INTO v_previous_move_id
+  FROM geokrety.gk_moves m
+  WHERE m.geokret = NEW.geokret
+    AND m.id <> v_current_move_id
+    AND m.move_type IN (0, 1, 3, 5)
+    AND (
+      m.moved_on_datetime < NEW.moved_on_datetime
+      OR (m.moved_on_datetime = NEW.moved_on_datetime AND m.id < v_current_move_id)
+    )
+  ORDER BY m.moved_on_datetime DESC, m.id DESC
+  LIMIT 1;
+
+  NEW.previous_move_id := v_previous_move_id;
+
+  SELECT pm.id
+    INTO v_previous_position_id
+  FROM geokrety.gk_geokrety g
+  JOIN geokrety.gk_moves pm ON pm.id = g.last_position
+  WHERE g.id = NEW.geokret
+    AND pm.id <> v_current_move_id
+    AND pm.position IS NOT NULL
+    AND pm.move_type IN (0, 1, 3, 5)
+    AND (
+      pm.moved_on_datetime < NEW.moved_on_datetime
+      OR (pm.moved_on_datetime = NEW.moved_on_datetime AND pm.id < v_current_move_id)
+    );
+
+  IF v_previous_position_id IS NULL THEN
+    SELECT m.id
+      INTO v_previous_position_id
+    FROM geokrety.gk_moves m
+    WHERE m.geokret = NEW.geokret
+      AND m.id <> v_current_move_id
+      AND m.position IS NOT NULL
+      AND m.move_type IN (0, 1, 3, 5)
+      AND (
+        m.moved_on_datetime < NEW.moved_on_datetime
+        OR (m.moved_on_datetime = NEW.moved_on_datetime AND m.id < v_current_move_id)
+      )
+    ORDER BY m.moved_on_datetime DESC, m.id DESC
+    LIMIT 1;
+  END IF;
+
+  NEW.previous_position_id := v_previous_position_id;
+
+  IF v_move_qualifies
+     AND v_has_position
+     AND NEW.previous_position_id IS NOT NULL THEN
+    SELECT (public.ST_Distance(pm.position, NEW.position) / 1000.0)::NUMERIC(8,3)
+      INTO NEW.km_distance
+    FROM geokrety.gk_moves pm
+    WHERE pm.id = NEW.previous_position_id
+      AND pm.position IS NOT NULL;
+  ELSE
+    NEW.km_distance := NULL;
+  END IF;
+
+  RETURN NEW;
+END;
+$$;
+
+
+--
 -- Name: fresher_than(timestamp with time zone, integer, character varying); Type: FUNCTION; Schema: geokrety; Owner: -
 --
 
@@ -395,6 +2351,35 @@ $$;
 CREATE FUNCTION geokrety.generate_verification_token(size integer DEFAULT 42) RETURNS character varying
     LANGUAGE sql
     AS $$SELECT array_to_string(array(select substr('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyz',((random()*(62-1)+1)::integer),1) from generate_series(1,size)),'');$$;
+
+
+--
+-- Name: geokret_check_non_collectible(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.geokret_check_non_collectible() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+
+IF NEW.parked IS NOT NULL AND NEW.non_collectible IS NULL THEN
+    IF OLD.non_collectible IS NOT NULL THEN
+        NEW.non_collectible := OLD.non_collectible;
+    ELSE
+        NEW.non_collectible := NEW.parked;
+    END IF;
+ELSIF OLD.parked IS NOT NULL AND NEW.parked IS NULL THEN
+	NEW.non_collectible := NULL;
+END IF;
+
+-- Set collectible require an holder
+IF NEW.non_collectible IS NOT NULL AND NEW.holder IS NULL AND OLD.holder IS NULL THEN
+	RAISE 'Cannot set non collectible without an holder';
+END IF;
+
+RETURN NEW;
+END;
+$$;
 
 
 --
@@ -595,6 +2580,70 @@ $$;
 
 
 --
+-- Name: geokret_manage_type(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.geokret_manage_type() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+
+IF NEW.type IN (2, 6, 8) THEN
+	IF NEW.holder != NEW.owner OR NEW.holder IS NULL THEN
+		RAISE 'You must hold the Geokrety to change to this type';
+	END IF;
+	IF NEW.non_collectible IS NULL THEN
+	    NEW.non_collectible := NOW();
+	END IF;
+ELSIF OLD.type IN (2, 6, 8) THEN
+	NEW.non_collectible := NULL;
+END IF;
+
+IF NEW.type = 10 THEN
+    -- Set both non_collectible and parked to current timestamp
+    NEW.non_collectible := NOW();
+    NEW.parked := NOW();
+    -- Note: When returning from type 10 to another type, we do nothing
+END IF;
+
+RETURN NEW;
+END;
+$$;
+
+
+--
+-- Name: geokret_parked_non_collectible(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.geokret_parked_non_collectible() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+
+IF OLD.parked != NEW.parked OR (OLD.parked IS NULL) != (NEW.parked IS NULL) THEN
+    IF NEW.parked IS NULL THEN
+        INSERT INTO geokrety.gk_moves ("geokret", "username", "moved_on_datetime", "move_type", "comment")
+            VALUES (NEW.id, 'GeoKrety Bot', NEW.parked, 2, '📦 GeoKrety removed from parked state');
+    ELSE
+        INSERT INTO geokrety.gk_moves ("geokret", "username", "moved_on_datetime", "move_type", "comment")
+            VALUES (NEW.id, 'GeoKrety Bot', NEW.parked, 2, '📦 GeoKrety set as parked');
+    END IF;
+ELSIF OLD.non_collectible != NEW.non_collectible OR (OLD.non_collectible IS NULL) != (NEW.non_collectible IS NULL) THEN
+    IF NEW.non_collectible IS NULL THEN
+        INSERT INTO geokrety.gk_moves ("geokret", "username", "moved_on_datetime", "move_type", "comment")
+            VALUES (NEW.id, 'GeoKrety Bot', NEW.non_collectible, 2, '🪤 GeoKrety set as collectible');
+    ELSE
+        INSERT INTO geokrety.gk_moves ("geokret", "username", "moved_on_datetime", "move_type", "comment")
+            VALUES (NEW.id, 'GeoKrety Bot', NEW.non_collectible, 2, '🪤 GeoKrety set as non-collectible');
+    END IF;
+END IF;
+
+RETURN NEW;
+END;
+$$;
+
+
+--
 -- Name: geokret_tracking_code(); Type: FUNCTION; Schema: geokrety; Owner: -
 --
 
@@ -703,6 +2752,28 @@ VALUES('stat_geokretow', 1)
 ON CONFLICT (name)
 DO UPDATE SET value = counter WHERE gk_statistics_counters.name = 'stat_geokretow';
 
+END;
+$$;
+
+
+--
+-- Name: gk_loves_update_count(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.gk_loves_update_count() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        UPDATE geokrety.gk_geokrety
+        SET loves_count = loves_count + 1
+        WHERE id = NEW.geokret;
+    ELSIF TG_OP = 'DELETE' THEN
+        UPDATE geokrety.gk_geokrety
+        SET loves_count = GREATEST(0, loves_count - 1)
+        WHERE id = OLD.geokret;
+    END IF;
+    RETURN NULL;
 END;
 $$;
 
@@ -904,6 +2975,18 @@ ELSIF type = 3 THEN
 	RETURN 'Coin';
 ELSIF type = 4 THEN
 	RETURN 'KretyPost';
+ELSIF type = 5 THEN
+	RETURN 'Pebble';
+ELSIF type = 6 THEN
+	RETURN 'Car';
+ELSIF type = 7 THEN
+	RETURN 'Playing card';
+ELSIF type = 8 THEN
+	RETURN 'Dog tag/pet';
+ELSIF type = 9 THEN
+	RETURN 'Jigsaw part';
+ELSIF type = 10 THEN
+	RETURN 'Hidden GeoKret';
 END IF;
 
 RAISE 'Unknown GeoKrety type';
@@ -1048,7 +3131,9 @@ END;$$;
 
 CREATE FUNCTION geokrety.move_requiring_coordinates() RETURNS smallint[]
     LANGUAGE sql
-    AS $$SELECT '{0,3,5}'::smallint[]$$;
+    AS $$
+SELECT '{0,5}'::smallint[]
+$$;
 
 
 --
@@ -1122,6 +3207,46 @@ END IF;
 
 RETURN FALSE;
 END;$$;
+
+
+--
+-- Name: moves_check_non_collectible(); Type: FUNCTION; Schema: geokrety; Owner: -
+--
+
+CREATE FUNCTION geokrety.moves_check_non_collectible() RETURNS trigger
+    LANGUAGE plpgsql
+    AS $$
+DECLARE
+	gk gk_geokrety%ROWTYPE;
+BEGIN
+
+-- Load GeoKret
+SELECT *
+INTO gk
+FROM gk_geokrety
+WHERE id = NEW.geokret;
+
+IF gk.non_collectible IS NULL THEN
+	RETURN NEW;
+END IF;
+
+IF gk.non_collectible > NEW.moved_on_datetime THEN
+	RETURN NEW;
+END IF;
+
+-- prevent dropped grabbed dipped form non-holder+non-owner
+IF gk.holder != NEW.author AND NEW.move_type IN (0::smallint, 1::smallint, 5::smallint) THEN
+	RAISE 'Non collectible GeoKret cannot be DROPPED/GRABBED/DIPPED';
+END IF;
+
+-- prevent grabbed from holder
+IF gk.holder = NEW.author AND NEW.move_type IN (0::smallint, 1::smallint, 3::smallint) THEN
+	RAISE 'Holder of non collectible GeoKret cannot log DROPPED/GRABBED/SEEN';
+END IF;
+
+RETURN NEW;
+END;
+$$;
 
 
 --
@@ -1444,7 +3569,7 @@ IF DATE_TRUNC('MINUTE', NEW.moved_on_datetime) < DATE_TRUNC('MINUTE', _geokret.b
 ELSIF NEW.moved_on_datetime > NOW()::timestamp(0) THEN
 	RAISE 'The date is in the future (if you are an inventor of a time travelling machine, contact us please!)';
 -- same move on this GK at this datetime
-ELSIF COUNT(*) > 0 FROM gk_moves WHERE moved_on_datetime = NEW.moved_on_datetime AND "geokret" = NEW.geokret AND id != NEW.id THEN
+ELSIF COUNT(*) > 0 FROM gk_moves WHERE moved_on_datetime = NEW.moved_on_datetime AND "geokret" = NEW.geokret AND id != NEW.id AND move_type NOT IN (2::smallint) AND NEW.move_type NOT IN (2::smallint) AND NOT (NEW.move_type IN (3::smallint) AND _geokret.non_collectible IS NOT NULL) THEN
 	RAISE 'A move at the exact same date already exists for this GeoKret';
 END IF;
 
@@ -1615,14 +3740,16 @@ CREATE FUNCTION geokrety.moves_type_last_position() RETURNS smallint[]
 
 CREATE FUNCTION geokrety.moves_type_waypoint(move_type smallint, waypoint character varying) RETURNS boolean
     LANGUAGE plpgsql
-    AS $$BEGIN
+    AS $$
+BEGIN
 
-IF NOT(move_type = ANY (geokrety.move_requiring_coordinates())) AND waypoint IS NOT NULL THEN
+IF move_type != 3::smallint AND NOT(move_type = ANY (geokrety.move_requiring_coordinates())) AND waypoint IS NOT NULL THEN
 	RAISE 'waypoint must be null when move_type is %', "move_type";
 END IF;
 
 RETURN TRUE;
-END;$$;
+END;
+$$;
 
 
 --
@@ -1631,7 +3758,9 @@ END;$$;
 
 CREATE FUNCTION geokrety.moves_types_markable_as_missing() RETURNS smallint[]
     LANGUAGE sql
-    AS $$SELECT '{0,3}'::smallint[]$$;
+    AS $$
+SELECT '{0,1,3,5}'::smallint[]
+$$;
 
 
 --
@@ -2762,7 +4891,12 @@ CREATE TABLE geokrety.gk_geokrety (
     label_template integer,
     legacy_mission text,
     born_on_datetime timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
-    CONSTRAINT validate_type CHECK ((type = ANY (ARRAY[0, 1, 2, 3, 4])))
+    non_collectible timestamp with time zone,
+    parked timestamp with time zone,
+    label_languages character varying(128),
+    comments_hidden boolean DEFAULT false NOT NULL,
+    loves_count integer DEFAULT 0 NOT NULL,
+    CONSTRAINT validate_type CHECK ((type = ANY (ARRAY[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])))
 );
 
 
@@ -2998,9 +5132,14 @@ CREATE TABLE geokrety.gk_moves (
     updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP,
     move_type smallint NOT NULL,
     "position" public.geography,
+    comment_hidden boolean DEFAULT false NOT NULL,
+    previous_move_id bigint,
+    previous_position_id bigint,
+    km_distance numeric(8,3),
+    logged_at_author_home boolean DEFAULT false NOT NULL,
     CONSTRAINT check_author_username CHECK (geokrety.moves_check_author_username(author, username)),
     CONSTRAINT check_type_waypoint CHECK (geokrety.moves_type_waypoint(move_type, waypoint)),
-    CONSTRAINT require_coordinates CHECK (((geokrety.move_type_require_coordinates(move_type) AND (lat IS NOT NULL) AND geokrety.move_type_require_coordinates(move_type) AND (lon IS NOT NULL)) OR ((NOT geokrety.move_type_require_coordinates(move_type)) AND (lat IS NULL) AND (NOT geokrety.move_type_require_coordinates(move_type)) AND (lon IS NULL)))),
+    CONSTRAINT require_coordinates CHECK (((geokrety.move_type_require_coordinates(move_type) AND (lat IS NOT NULL) AND geokrety.move_type_require_coordinates(move_type) AND (lon IS NOT NULL)) OR ((NOT geokrety.move_type_require_coordinates(move_type)) AND (lat IS NULL) AND (NOT geokrety.move_type_require_coordinates(move_type)) AND (lon IS NULL)) OR (move_type = (3)::smallint))),
     CONSTRAINT validate_logtype CHECK ((move_type = ANY (ARRAY[0, 1, 2, 3, 4, 5, 6])))
 );
 
@@ -3048,6 +5187,27 @@ COMMENT ON COLUMN geokrety.gk_moves.move_type IS '0=drop, 1=grab, 2=comment, 3=m
 
 
 --
+-- Name: COLUMN gk_moves.previous_move_id; Type: COMMENT; Schema: geokrety; Owner: -
+--
+
+COMMENT ON COLUMN geokrety.gk_moves.previous_move_id IS 'FK to the most recent earlier qualifying move of the same GK; populated for both qualifying and non-qualifying rows so trail history keeps the last qualifying predecessor.';
+
+
+--
+-- Name: COLUMN gk_moves.previous_position_id; Type: COMMENT; Schema: geokrety; Owner: -
+--
+
+COMMENT ON COLUMN geokrety.gk_moves.previous_position_id IS 'FK to the most recent earlier qualifying move of the same GK that has coordinates; populated even on non-position rows so trail history keeps the last positioned predecessor.';
+
+
+--
+-- Name: COLUMN gk_moves.km_distance; Type: COMMENT; Schema: geokrety; Owner: -
+--
+
+COMMENT ON COLUMN geokrety.gk_moves.km_distance IS 'Great-circle distance in km from previous_position_id to this move position; NUMERIC(8,3) for deterministic aggregation.';
+
+
+--
 -- Name: gk_users; Type: TABLE; Schema: geokrety; Owner: -
 --
 
@@ -3057,7 +5217,6 @@ CREATE TABLE geokrety.gk_users (
     password character varying(120),
     joined_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
     updated_on_datetime timestamp(0) with time zone DEFAULT CURRENT_TIMESTAMP,
-    daily_mails boolean DEFAULT true NOT NULL,
     registration_ip inet NOT NULL,
     preferred_language character varying(2),
     home_latitude double precision,
@@ -3080,6 +5239,7 @@ CREATE TABLE geokrety.gk_users (
     _secid_hash bytea,
     _email_hash bytea,
     home_position public.geography,
+    list_unsubscribe_token uuid DEFAULT gen_random_uuid() NOT NULL,
     CONSTRAINT validate_account_valid CHECK ((account_valid = ANY (ARRAY[0, 1, 2]))),
     CONSTRAINT validate_email_invalid CHECK ((email_invalid = ANY (ARRAY[0, 1, 2, 3, 4, 5])))
 );
@@ -3156,7 +5316,9 @@ CREATE VIEW geokrety.gk_geokrety_with_details AS
     COALESCE(gk_moves.username, m_author.username) AS author_username,
     COALESCE(g_owner.username, 'Abandoned'::character varying) AS owner_username,
     g_avatar.key AS avatar_key,
-    gk_geokrety.born_on_datetime
+    gk_geokrety.born_on_datetime,
+    gk_geokrety.non_collectible,
+    gk_geokrety.parked
    FROM ((((geokrety.gk_geokrety
      LEFT JOIN geokrety.gk_moves ON ((gk_geokrety.last_position = gk_moves.id)))
      LEFT JOIN geokrety.gk_users m_author ON ((gk_moves.author = m_author.id)))
@@ -3199,7 +5361,7 @@ CREATE MATERIALIZED VIEW geokrety.gk_geokrety_in_caches AS
     owner_username,
     avatar_key
    FROM geokrety.gk_geokrety_with_details
-  WHERE (move_type = ANY (geokrety.moves_types_markable_as_missing()))
+  WHERE ((move_type = ANY (ARRAY[0, 3])) AND ("position" IS NOT NULL))
   WITH NO DATA;
 
 
@@ -3290,6 +5452,32 @@ CREATE SEQUENCE geokrety.gk_labels_id_seq
 --
 
 ALTER SEQUENCE geokrety.gk_labels_id_seq OWNED BY geokrety.gk_labels.id;
+
+
+--
+-- Name: gk_loves; Type: TABLE; Schema: geokrety; Owner: -
+--
+
+CREATE TABLE geokrety.gk_loves (
+    id integer NOT NULL,
+    "user" integer NOT NULL,
+    geokret integer NOT NULL,
+    created_on_datetime timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL
+);
+
+
+--
+-- Name: gk_loves_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: -
+--
+
+ALTER TABLE geokrety.gk_loves ALTER COLUMN id ADD GENERATED BY DEFAULT AS IDENTITY (
+    SEQUENCE NAME geokrety.gk_loves_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1
+);
 
 
 --
@@ -3529,6 +5717,42 @@ CREATE TABLE geokrety.gk_races_participants (
 
 
 --
+-- Name: gk_rate_limit_overrides; Type: TABLE; Schema: geokrety; Owner: -
+--
+
+CREATE TABLE geokrety.gk_rate_limit_overrides (
+    id integer NOT NULL,
+    "user" integer NOT NULL,
+    level smallint DEFAULT 0 NOT NULL,
+    starts_at timestamp with time zone,
+    ends_at timestamp with time zone,
+    created_on_datetime timestamp with time zone DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    updated_on_datetime timestamp with time zone,
+    CONSTRAINT gk_rlovr_level_nonneg CHECK ((level >= 0))
+);
+
+
+--
+-- Name: gk_rate_limit_overrides_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: -
+--
+
+CREATE SEQUENCE geokrety.gk_rate_limit_overrides_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: gk_rate_limit_overrides_id_seq; Type: SEQUENCE OWNED BY; Schema: geokrety; Owner: -
+--
+
+ALTER SEQUENCE geokrety.gk_rate_limit_overrides_id_seq OWNED BY geokrety.gk_rate_limit_overrides.id;
+
+
+--
 -- Name: gk_site_settings; Type: TABLE; Schema: geokrety; Owner: -
 --
 
@@ -3636,6 +5860,70 @@ CREATE SEQUENCE geokrety.gk_statistics_counters_id_seq
 --
 
 ALTER SEQUENCE geokrety.gk_statistics_counters_id_seq OWNED BY geokrety.gk_statistics_counters.id;
+
+
+--
+-- Name: gk_statistics_country_trends; Type: MATERIALIZED VIEW; Schema: geokrety; Owner: -
+--
+
+CREATE MATERIALIZED VIEW geokrety.gk_statistics_country_trends AS
+ WITH years AS (
+         SELECT generate_series(2007, (EXTRACT(year FROM CURRENT_DATE))::integer) AS year
+        ), country_yearly_counts AS (
+         SELECT y.year,
+            c.country,
+            COALESCE(direct_counts.count, (0)::bigint) AS count
+           FROM ((years y
+             CROSS JOIN ( SELECT DISTINCT lower((gk_moves.country)::text) AS country
+                   FROM geokrety.gk_moves
+                  WHERE ((gk_moves.country IS NOT NULL) AND (gk_moves.move_type = ANY (ARRAY[0, 3, 5])))) c)
+             LEFT JOIN ( SELECT (EXTRACT(year FROM m.moved_on_datetime))::integer AS year,
+                    lower((m.country)::text) AS country,
+                    count(DISTINCT m.geokret) AS count
+                   FROM geokrety.gk_moves m
+                  WHERE ((m.country IS NOT NULL) AND (m.move_type = ANY (ARRAY[0, 3, 5])))
+                  GROUP BY (EXTRACT(year FROM m.moved_on_datetime)), (lower((m.country)::text))) direct_counts ON (((y.year = direct_counts.year) AND (c.country = direct_counts.country))))
+        ), country_yearly_dip_counts AS (
+         SELECT (EXTRACT(year FROM m.moved_on_datetime))::integer AS year,
+            lower((m.country)::text) AS country,
+            count(DISTINCT m.geokret) AS count
+           FROM geokrety.gk_moves m
+          WHERE ((m.country IS NOT NULL) AND (m.move_type = 5))
+          GROUP BY (EXTRACT(year FROM m.moved_on_datetime)), (lower((m.country)::text))
+        ), current_stats AS (
+         SELECT lower((m.country)::text) AS country,
+            count(DISTINCT m.geokret) AS geokret_count,
+            round((((count(DISTINCT m.geokret))::numeric * 100.0) / (NULLIF(( SELECT count(DISTINCT gk_moves.geokret) AS count
+                   FROM geokrety.gk_moves
+                  WHERE (gk_moves.country IS NOT NULL)), 0))::numeric), 2) AS percentage
+           FROM (geokrety.gk_moves m
+             JOIN ( SELECT gk_moves.geokret,
+                    max(gk_moves.id) AS last_move_id
+                   FROM geokrety.gk_moves
+                  WHERE (gk_moves.move_type = ANY (ARRAY[0, 3, 5]))
+                  GROUP BY gk_moves.geokret) latest ON ((m.id = latest.last_move_id)))
+          WHERE ((m.country IS NOT NULL) AND (m.move_type = ANY (ARRAY[0, 3, 5])))
+          GROUP BY (lower((m.country)::text))
+        )
+ SELECT country,
+    geokret_count,
+    percentage,
+    ( SELECT array_agg(country_yearly_counts.count ORDER BY country_yearly_counts.year) AS array_agg
+           FROM country_yearly_counts
+          WHERE (country_yearly_counts.country = cs.country)) AS trend_counts,
+    ( SELECT array_agg(country_yearly_dip_counts.count ORDER BY country_yearly_dip_counts.year) AS array_agg
+           FROM country_yearly_dip_counts
+          WHERE (country_yearly_dip_counts.country = cs.country)) AS trend_dip_counts
+   FROM current_stats cs
+  ORDER BY geokret_count DESC
+  WITH NO DATA;
+
+
+--
+-- Name: MATERIALIZED VIEW gk_statistics_country_trends; Type: COMMENT; Schema: geokrety; Owner: -
+--
+
+COMMENT ON MATERIALIZED VIEW geokrety.gk_statistics_country_trends IS 'Materialized view containing country statistics with all-time trend data. Refresh periodically to update stats.';
 
 
 --
@@ -4288,6 +6576,43 @@ ALTER SEQUENCE geokrety.users_id_seq OWNED BY geokrety.gk_users.id;
 
 
 --
+-- Name: vw_geokret_move_history; Type: VIEW; Schema: geokrety; Owner: -
+--
+
+CREATE VIEW geokrety.vw_geokret_move_history AS
+ SELECT geokret,
+    id AS move_id,
+    previous_move_id,
+    previous_position_id,
+        CASE
+            WHEN ("position" IS NULL) THEN '-'::text
+            ELSE (((round((public.st_y(("position")::public.geometry))::numeric, 5))::text || ' '::text) || (round((public.st_x(("position")::public.geometry))::numeric, 5))::text)
+        END AS "position",
+    km_distance,
+    move_type,
+        CASE move_type
+            WHEN 0 THEN 'drop'::text
+            WHEN 1 THEN 'grab'::text
+            WHEN 2 THEN 'comment'::text
+            WHEN 3 THEN 'met'::text
+            WHEN 4 THEN 'archive'::text
+            WHEN 5 THEN 'dip'::text
+            WHEN 9 THEN 'Born'::text
+            ELSE 'unknown'::text
+        END AS move_type_label,
+    moved_on_datetime
+   FROM geokrety.gk_moves m
+  ORDER BY moved_on_datetime, id;
+
+
+--
+-- Name: VIEW vw_geokret_move_history; Type: COMMENT; Schema: geokrety; Owner: -
+--
+
+COMMENT ON VIEW geokrety.vw_geokret_move_history IS 'Denormalized move history view for Geokret trail logs; includes human-readable move_type_label and text position.';
+
+
+--
 -- Name: watched_id_seq; Type: SEQUENCE; Schema: geokrety; Owner: -
 --
 
@@ -4466,6 +6791,13 @@ ALTER TABLE ONLY geokrety.gk_races_participants ALTER COLUMN id SET DEFAULT next
 
 
 --
+-- Name: gk_rate_limit_overrides id; Type: DEFAULT; Schema: geokrety; Owner: -
+--
+
+ALTER TABLE ONLY geokrety.gk_rate_limit_overrides ALTER COLUMN id SET DEFAULT nextval('geokrety.gk_rate_limit_overrides_id_seq'::regclass);
+
+
+--
 -- Name: gk_site_settings id; Type: DEFAULT; Schema: geokrety; Owner: -
 --
 
@@ -4612,11 +6944,27 @@ ALTER TABLE ONLY geokrety.gk_labels
 
 
 --
+-- Name: gk_loves gk_loves_pkey; Type: CONSTRAINT; Schema: geokrety; Owner: -
+--
+
+ALTER TABLE ONLY geokrety.gk_loves
+    ADD CONSTRAINT gk_loves_pkey PRIMARY KEY (id);
+
+
+--
 -- Name: gk_mails gk_mails_token_uniq; Type: CONSTRAINT; Schema: geokrety; Owner: -
 --
 
 ALTER TABLE ONLY geokrety.gk_mails
     ADD CONSTRAINT gk_mails_token_uniq UNIQUE (token);
+
+
+--
+-- Name: gk_moves gk_moves_pkey; Type: CONSTRAINT; Schema: geokrety; Owner: -
+--
+
+ALTER TABLE ONLY geokrety.gk_moves
+    ADD CONSTRAINT gk_moves_pkey PRIMARY KEY (id);
 
 
 --
@@ -4641,6 +6989,14 @@ ALTER TABLE ONLY geokrety.gk_news_comments_access
 
 ALTER TABLE ONLY geokrety.gk_pictures
     ADD CONSTRAINT gk_pictures_id PRIMARY KEY (id);
+
+
+--
+-- Name: gk_rate_limit_overrides gk_rate_limit_overrides_pkey; Type: CONSTRAINT; Schema: geokrety; Owner: -
+--
+
+ALTER TABLE ONLY geokrety.gk_rate_limit_overrides
+    ADD CONSTRAINT gk_rate_limit_overrides_pkey PRIMARY KEY (id);
 
 
 --
@@ -4828,14 +7184,6 @@ ALTER TABLE ONLY geokrety.gk_moves_comments
 
 
 --
--- Name: gk_moves idx_21044_primary; Type: CONSTRAINT; Schema: geokrety; Owner: -
---
-
-ALTER TABLE ONLY geokrety.gk_moves
-    ADD CONSTRAINT idx_21044_primary PRIMARY KEY (id);
-
-
---
 -- Name: gk_news idx_21058_primary; Type: CONSTRAINT; Schema: geokrety; Owner: -
 --
 
@@ -4948,6 +7296,13 @@ ALTER TABLE ONLY geokrety.sessions
 
 
 --
+-- Name: geokrety_gk_geokrety_in_caches_id_uq; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE UNIQUE INDEX geokrety_gk_geokrety_in_caches_id_uq ON geokrety.gk_geokrety_in_caches USING btree (id);
+
+
+--
 -- Name: gk_geokrety_created_on_datetime; Type: INDEX; Schema: geokrety; Owner: -
 --
 
@@ -4994,13 +7349,6 @@ CREATE INDEX gk_moves_author ON geokrety.gk_moves USING btree (author);
 --
 
 CREATE INDEX gk_moves_country ON geokrety.gk_moves USING btree (country);
-
-
---
--- Name: gk_moves_country_index; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX gk_moves_country_index ON geokrety.gk_moves USING btree (country);
 
 
 --
@@ -5053,31 +7401,10 @@ CREATE INDEX gk_moves_move_type_distance ON geokrety.gk_moves USING btree (move_
 
 
 --
--- Name: gk_moves_move_type_id; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX gk_moves_move_type_id ON geokrety.gk_moves USING btree (move_type, id);
-
-
---
--- Name: gk_moves_move_type_id_position; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX gk_moves_move_type_id_position ON geokrety.gk_moves USING btree (move_type, id, "position");
-
-
---
 -- Name: gk_moves_moved_on_datetime; Type: INDEX; Schema: geokrety; Owner: -
 --
 
 CREATE INDEX gk_moves_moved_on_datetime ON geokrety.gk_moves USING btree (moved_on_datetime);
-
-
---
--- Name: gk_moves_type_index; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX gk_moves_type_index ON geokrety.gk_moves USING btree (move_type);
 
 
 --
@@ -5120,6 +7447,34 @@ CREATE INDEX gk_pictures_uploaded_on_datetime_move_geokret ON geokrety.gk_pictur
 --
 
 CREATE INDEX gk_pictures_uploaded_on_datetime_user ON geokrety.gk_pictures USING btree (uploaded_on_datetime, "user");
+
+
+--
+-- Name: gk_rlovr_level_idx; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX gk_rlovr_level_idx ON geokrety.gk_rate_limit_overrides USING btree (level);
+
+
+--
+-- Name: gk_rlovr_user_idx; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX gk_rlovr_user_idx ON geokrety.gk_rate_limit_overrides USING btree ("user");
+
+
+--
+-- Name: gk_rlovr_user_window_idx; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX gk_rlovr_user_window_idx ON geokrety.gk_rate_limit_overrides USING btree ("user", starts_at, ends_at);
+
+
+--
+-- Name: gk_rlovr_window_idx; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX gk_rlovr_window_idx ON geokrety.gk_rate_limit_overrides USING btree (starts_at, ends_at);
 
 
 --
@@ -5321,62 +7676,6 @@ CREATE INDEX idx_21034_ruch_id ON geokrety.gk_moves_comments USING btree (move);
 --
 
 CREATE INDEX idx_21034_user_id ON geokrety.gk_moves_comments USING btree (author);
-
-
---
--- Name: idx_21044_alt; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX idx_21044_alt ON geokrety.gk_moves USING btree (elevation);
-
-
---
--- Name: idx_21044_data; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX idx_21044_data ON geokrety.gk_moves USING btree (created_on_datetime);
-
-
---
--- Name: idx_21044_data_dodania; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX idx_21044_data_dodania ON geokrety.gk_moves USING btree (moved_on_datetime);
-
-
---
--- Name: idx_21044_lat; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX idx_21044_lat ON geokrety.gk_moves USING btree (lat);
-
-
---
--- Name: idx_21044_lon; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX idx_21044_lon ON geokrety.gk_moves USING btree (lon);
-
-
---
--- Name: idx_21044_timestamp; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX idx_21044_timestamp ON geokrety.gk_moves USING btree (updated_on_datetime);
-
-
---
--- Name: idx_21044_user; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX idx_21044_user ON geokrety.gk_moves USING btree (author);
-
-
---
--- Name: idx_21044_waypoint; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX idx_21044_waypoint ON geokrety.gk_moves USING btree (waypoint);
 
 
 --
@@ -5597,6 +7896,27 @@ CREATE INDEX idx_gk_geokrety_in_caches_moved_on_datetime ON geokrety.gk_geokrety
 
 
 --
+-- Name: idx_gk_loves_geokret; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX idx_gk_loves_geokret ON geokrety.gk_loves USING btree (geokret);
+
+
+--
+-- Name: idx_gk_loves_user_geokret; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_gk_loves_user_geokret ON geokrety.gk_loves USING btree ("user", geokret);
+
+
+--
+-- Name: idx_gk_moves_author_norm_country_hist; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX idx_gk_moves_author_norm_country_hist ON geokrety.gk_moves USING btree (author, geokrety.fn_normalize_country_code((country)::text), moved_on_datetime, id) WHERE ((author IS NOT NULL) AND (country IS NOT NULL));
+
+
+--
 -- Name: idx_gk_moves_comments_created_on_datetime; Type: INDEX; Schema: geokrety; Owner: -
 --
 
@@ -5604,24 +7924,66 @@ CREATE INDEX idx_gk_moves_comments_created_on_datetime ON geokrety.gk_moves_comm
 
 
 --
--- Name: idx_moves_geokret; Type: INDEX; Schema: geokrety; Owner: -
+-- Name: idx_gk_moves_distance_records; Type: INDEX; Schema: geokrety; Owner: -
 --
 
-CREATE INDEX idx_moves_geokret ON geokrety.gk_moves USING btree (geokret);
-
-
---
--- Name: idx_moves_id; Type: INDEX; Schema: geokrety; Owner: -
---
-
-CREATE INDEX idx_moves_id ON geokrety.gk_moves USING btree (id);
+CREATE INDEX idx_gk_moves_distance_records ON geokrety.gk_moves USING btree (geokret) INCLUDE (km_distance) WHERE (km_distance IS NOT NULL);
 
 
 --
--- Name: idx_moves_type_id; Type: INDEX; Schema: geokrety; Owner: -
+-- Name: idx_gk_moves_geokret_chainlookup; Type: INDEX; Schema: geokrety; Owner: -
 --
 
-CREATE INDEX idx_moves_type_id ON geokrety.gk_moves USING btree (move_type, id);
+CREATE INDEX idx_gk_moves_geokret_chainlookup ON geokrety.gk_moves USING btree (geokret, moved_on_datetime, id) INCLUDE ("position", km_distance) WHERE (("position" IS NOT NULL) AND (move_type = ANY (ARRAY[0, 1, 3, 5])));
+
+
+--
+-- Name: idx_gk_moves_geokret_norm_country_hist; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX idx_gk_moves_geokret_norm_country_hist ON geokrety.gk_moves USING btree (geokret, geokrety.fn_normalize_country_code((country)::text), moved_on_datetime, id) WHERE (country IS NOT NULL);
+
+
+--
+-- Name: idx_gk_moves_prev_loc_lookup; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX idx_gk_moves_prev_loc_lookup ON geokrety.gk_moves USING btree (geokret, moved_on_datetime DESC, id DESC) WHERE (("position" IS NOT NULL) AND (move_type = ANY (ARRAY[0, 1, 3, 5])));
+
+
+--
+-- Name: idx_gk_moves_qualified_period; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX idx_gk_moves_qualified_period ON geokrety.gk_moves USING btree (moved_on_datetime, id, geokret) WHERE (("position" IS NOT NULL) AND (move_type = ANY (ARRAY[0, 1, 3, 5])));
+
+
+--
+-- Name: idx_gk_moves_relation_geokret_hist; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX idx_gk_moves_relation_geokret_hist ON geokrety.gk_moves USING btree (geokret, moved_on_datetime, id) INCLUDE (author) WHERE ((author IS NOT NULL) AND (move_type = ANY (ARRAY[0, 1, 3, 5])));
+
+
+--
+-- Name: idx_gk_moves_replay_cursor; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX idx_gk_moves_replay_cursor ON geokrety.gk_moves USING btree (moved_on_datetime, id);
+
+
+--
+-- Name: idx_gk_moves_waypoint_code_hist; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE INDEX idx_gk_moves_waypoint_code_hist ON geokrety.gk_moves USING btree (upper(btrim((waypoint)::text)), moved_on_datetime, id) INCLUDE (geokret, author) WHERE ((waypoint IS NOT NULL) AND (btrim((waypoint)::text) <> ''::text) AND (move_type <> 2));
+
+
+--
+-- Name: idx_gk_statistics_country_trends_country; Type: INDEX; Schema: geokrety; Owner: -
+--
+
+CREATE UNIQUE INDEX idx_gk_statistics_country_trends_country ON geokrety.gk_statistics_country_trends USING btree (country);
 
 
 --
@@ -5716,6 +8078,13 @@ CREATE TRIGGER after_20_last_log_and_position AFTER INSERT OR DELETE OR UPDATE O
 
 
 --
+-- Name: gk_geokrety after_20_parked_non_collectible; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER after_20_parked_non_collectible AFTER INSERT OR UPDATE OF non_collectible, parked ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.geokret_parked_non_collectible();
+
+
+--
 -- Name: gk_pictures after_20_set_featured_picture; Type: TRIGGER; Schema: geokrety; Owner: -
 --
 
@@ -5772,6 +8141,41 @@ CREATE TRIGGER after_99_notify_amqp AFTER INSERT OR DELETE OR UPDATE OF username
 
 
 --
+-- Name: gk_geokrety after_99_notify_amqp_geokrety; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER after_99_notify_amqp_geokrety AFTER INSERT ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION notify_queues.amqp_notify_id();
+
+
+--
+-- Name: gk_loves after_99_notify_amqp_loves; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER after_99_notify_amqp_loves AFTER INSERT ON geokrety.gk_loves FOR EACH ROW EXECUTE FUNCTION notify_queues.amqp_notify_id();
+
+
+--
+-- Name: gk_moves after_99_notify_amqp_moves; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER after_99_notify_amqp_moves AFTER INSERT ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION notify_queues.amqp_notify_id();
+
+
+--
+-- Name: gk_moves_comments after_99_notify_amqp_moves_comments; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER after_99_notify_amqp_moves_comments AFTER INSERT ON geokrety.gk_moves_comments FOR EACH ROW EXECUTE FUNCTION notify_queues.amqp_notify_id();
+
+
+--
+-- Name: gk_loves after_gk_loves_update_count; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER after_gk_loves_update_count AFTER INSERT OR DELETE ON geokrety.gk_loves FOR EACH ROW EXECUTE FUNCTION geokrety.gk_loves_update_count();
+
+
+--
 -- Name: gk_moves before_00_updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: -
 --
 
@@ -5783,6 +8187,20 @@ CREATE TRIGGER before_00_updated_on_datetime BEFORE UPDATE ON geokrety.gk_moves 
 --
 
 CREATE TRIGGER before_00_updated_on_datetime BEFORE UPDATE ON geokrety.gk_moves_comments FOR EACH ROW EXECUTE FUNCTION geokrety.on_update_current_timestamp();
+
+
+--
+-- Name: gk_rate_limit_overrides before_00_updated_on_datetime; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER before_00_updated_on_datetime BEFORE UPDATE ON geokrety.gk_rate_limit_overrides FOR EACH ROW EXECUTE FUNCTION geokrety.on_update_current_timestamp();
+
+
+--
+-- Name: gk_users_settings before_01_delete_if_default; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER before_01_delete_if_default BEFORE INSERT OR UPDATE ON geokrety.gk_users_settings FOR EACH ROW EXECUTE FUNCTION geokrety.delete_user_setting_if_default();
 
 
 --
@@ -6024,10 +8442,24 @@ CREATE TRIGGER before_40_username_email_uniq BEFORE INSERT OR UPDATE OF username
 
 
 --
+-- Name: gk_geokrety before_45_manage_type; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER before_45_manage_type BEFORE INSERT OR UPDATE OF type, non_collectible ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.geokret_manage_type();
+
+
+--
 -- Name: gk_moves before_50_check_archive_author; Type: TRIGGER; Schema: geokrety; Owner: -
 --
 
 CREATE TRIGGER before_50_check_archive_author BEFORE INSERT OR UPDATE OF geokret, move_type ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_check_archive_author();
+
+
+--
+-- Name: gk_geokrety before_50_check_non_collectible; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER before_50_check_non_collectible BEFORE INSERT OR UPDATE OF non_collectible, parked ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.geokret_check_non_collectible();
 
 
 --
@@ -6042,6 +8474,13 @@ CREATE TRIGGER before_50_manage_home_position BEFORE INSERT OR UPDATE OF home_la
 --
 
 CREATE TRIGGER before_50_update_user_account_status BEFORE UPDATE OF used ON geokrety.gk_email_revalidate FOR EACH ROW WHEN ((new.used = 1)) EXECUTE FUNCTION geokrety.email_revalidate_validated_update_user();
+
+
+--
+-- Name: gk_moves before_60_check_non_collectible; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER before_60_check_non_collectible BEFORE INSERT OR UPDATE OF move_type ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.moves_check_non_collectible();
 
 
 --
@@ -6063,6 +8502,153 @@ CREATE TRIGGER before_70_set_username_deleted BEFORE DELETE ON geokrety.gk_users
 --
 
 CREATE TRIGGER comments_count_override AFTER UPDATE OF comments_count ON geokrety.gk_news FOR EACH ROW EXECUTE FUNCTION geokrety.news_comments_counts_override();
+
+
+--
+-- Name: gk_geokrety tr_gk_geokrety_after_first_finder; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_geokrety_after_first_finder AFTER DELETE OR UPDATE OF owner, created_on_datetime ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_geokrety_first_finder();
+
+
+--
+-- Name: gk_geokrety tr_gk_geokrety_counters; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_geokrety_counters AFTER INSERT OR DELETE ON geokrety.gk_geokrety FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_geokrety_counter();
+
+
+--
+-- Name: gk_loves tr_gk_loves_activity; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_loves_activity AFTER INSERT OR DELETE OR UPDATE ON geokrety.gk_loves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_loves_activity();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_country_history; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_country_history AFTER INSERT OR DELETE OR UPDATE OF geokret, lat, lon, "position", country, moved_on_datetime, move_type ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_country_history();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_country_rollups; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_country_rollups AFTER INSERT OR DELETE OR UPDATE OF geokret, author, lat, lon, "position", country, moved_on_datetime, move_type ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_country_rollups();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_daily_activity; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_daily_activity AFTER UPDATE ON geokrety.gk_moves REFERENCING OLD TABLE AS old_moves NEW TABLE AS new_moves FOR EACH STATEMENT EXECUTE FUNCTION geokrety.fn_gk_moves_daily_activity();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_daily_activity_delete; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_daily_activity_delete AFTER DELETE ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_daily_activity();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_daily_activity_insert; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_daily_activity_insert AFTER INSERT ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_daily_activity();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_first_finder; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_first_finder AFTER INSERT OR DELETE OR UPDATE OF geokret, author, move_type, moved_on_datetime ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_first_finder();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_milestones; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_milestones AFTER INSERT ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_milestones();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_prev_move_delete; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_prev_move_delete AFTER DELETE ON geokrety.gk_moves REFERENCING OLD TABLE AS deleted_moves FOR EACH STATEMENT EXECUTE FUNCTION geokrety.fn_rewire_previous_move_ids_after_delete();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_prev_move_insert; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_prev_move_insert AFTER INSERT ON geokrety.gk_moves REFERENCING NEW TABLE AS new_moves FOR EACH STATEMENT EXECUTE FUNCTION geokrety.fn_refresh_previous_move_ids_after_insert();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_prev_move_update; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_prev_move_update AFTER UPDATE ON geokrety.gk_moves REFERENCING OLD TABLE AS old_moves NEW TABLE AS new_moves FOR EACH STATEMENT EXECUTE FUNCTION geokrety.fn_refresh_previous_move_ids_after_update();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_relations; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_relations AFTER INSERT OR DELETE OR UPDATE OF geokret, author, moved_on_datetime, move_type ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_relations();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_sharded_counters; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_sharded_counters AFTER INSERT OR DELETE OR UPDATE OF id, move_type ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_sharded_counter();
+
+
+--
+-- Name: gk_moves tr_gk_moves_after_waypoint_visits; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_after_waypoint_visits AFTER INSERT OR DELETE OR UPDATE OF geokret, author, waypoint, moved_on_datetime, move_type, "position", country ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_waypoint_cache();
+
+
+--
+-- Name: gk_moves tr_gk_moves_before_logged_at_author_home; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_before_logged_at_author_home BEFORE INSERT OR UPDATE ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_set_logged_at_author_home();
+
+
+--
+-- Name: gk_moves tr_gk_moves_before_prev_move; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_before_prev_move BEFORE INSERT OR UPDATE ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_set_previous_move_id_and_distance();
+
+
+--
+-- Name: gk_moves tr_gk_moves_emit_points_event; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_moves_emit_points_event AFTER INSERT ON geokrety.gk_moves FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_moves_emit_points_event();
+
+
+--
+-- Name: gk_pictures tr_gk_pictures_after_counter; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_pictures_after_counter AFTER INSERT OR DELETE OR UPDATE ON geokrety.gk_pictures FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_pictures_counter();
+
+
+--
+-- Name: gk_users tr_gk_users_activity; Type: TRIGGER; Schema: geokrety; Owner: -
+--
+
+CREATE TRIGGER tr_gk_users_activity AFTER INSERT OR DELETE ON geokrety.gk_users FOR EACH ROW EXECUTE FUNCTION geokrety.fn_gk_users_counter();
 
 
 --
@@ -6255,6 +8841,22 @@ CREATE TRIGGER updated_on_datetime BEFORE UPDATE ON geokrety.gk_yearly_ranking F
 
 
 --
+-- Name: gk_moves fk_gk_moves_previous_move; Type: FK CONSTRAINT; Schema: geokrety; Owner: -
+--
+
+ALTER TABLE ONLY geokrety.gk_moves
+    ADD CONSTRAINT fk_gk_moves_previous_move FOREIGN KEY (previous_move_id) REFERENCES geokrety.gk_moves(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
+-- Name: gk_moves fk_gk_moves_previous_position; Type: FK CONSTRAINT; Schema: geokrety; Owner: -
+--
+
+ALTER TABLE ONLY geokrety.gk_moves
+    ADD CONSTRAINT fk_gk_moves_previous_position FOREIGN KEY (previous_position_id) REFERENCES geokrety.gk_moves(id) DEFERRABLE INITIALLY DEFERRED;
+
+
+--
 -- Name: gk_account_activation gk_account_activation_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: -
 --
 
@@ -6364,6 +8966,22 @@ ALTER TABLE ONLY geokrety.gk_geokrety_rating
 
 ALTER TABLE ONLY geokrety.gk_geokrety_rating
     ADD CONSTRAINT gk_geokrety_rating_geokret_fkey FOREIGN KEY (geokret) REFERENCES geokrety.gk_geokrety(id) ON DELETE CASCADE;
+
+
+--
+-- Name: gk_loves gk_loves_geokret_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: -
+--
+
+ALTER TABLE ONLY geokrety.gk_loves
+    ADD CONSTRAINT gk_loves_geokret_fkey FOREIGN KEY (geokret) REFERENCES geokrety.gk_geokrety(id) ON DELETE CASCADE;
+
+
+--
+-- Name: gk_loves gk_loves_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: -
+--
+
+ALTER TABLE ONLY geokrety.gk_loves
+    ADD CONSTRAINT gk_loves_user_fkey FOREIGN KEY ("user") REFERENCES geokrety.gk_users(id) ON DELETE CASCADE;
 
 
 --
@@ -6543,6 +9161,14 @@ ALTER TABLE ONLY geokrety.gk_races_participants
 
 
 --
+-- Name: gk_rate_limit_overrides gk_rlovr_user_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: -
+--
+
+ALTER TABLE ONLY geokrety.gk_rate_limit_overrides
+    ADD CONSTRAINT gk_rlovr_user_fkey FOREIGN KEY ("user") REFERENCES geokrety.gk_users(id) ON DELETE CASCADE;
+
+
+--
 -- Name: gk_site_settings gk_site_settings_name_fkey; Type: FK CONSTRAINT; Schema: geokrety; Owner: -
 --
 
@@ -6649,4 +9275,6 @@ ALTER TABLE ONLY geokrety.gk_yearly_ranking
 --
 -- PostgreSQL database dump complete
 --
+
+\unrestrict 767QLRRMhazJKNVmzceXIdKxIxmDD18lBdsWJ9WzAhbzeJbL9wiX5IChLyECTia
 
