@@ -1,9 +1,12 @@
+TRUNCATE geokrety.gk_labels CASCADE;
 --
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
--- Dumped by pg_dump version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
+\restrict c91JJyh1hYt0qlJqYRgEF6GEJuZIwksRawIoedA9C2VijPcCsCBqh82bVAC9vTv
+
+-- Dumped from database version 16.13 (Ubuntu 16.13-1.pgdg24.04+1)
+-- Dumped by pg_dump version 18.3 (Ubuntu 18.3-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,6 +22,10 @@ SET row_security = off;
 --
 -- Data for Name: gk_labels; Type: TABLE DATA; Schema: geokrety; Owner: -
 --
+
+SET SESSION AUTHORIZATION DEFAULT;
+
+ALTER TABLE geokrety.gk_labels DISABLE TRIGGER ALL;
 
 COPY geokrety.gk_labels (id, template, title, author, created_on_datetime, updated_on_datetime) FROM stdin;
 1	default	Default	GK Team	2023-04-05 08:56:46.101138+00	2023-04-05 08:56:46.101138+00
@@ -36,17 +43,22 @@ COPY geokrety.gk_labels (id, template, title, author, created_on_datetime, updat
 13	middleclassic	Middle classic	Filips	2023-04-05 08:56:46.101138+00	2023-04-05 08:56:46.101138+00
 14	wallson1	Modern Wallson 1	Wallson	2023-04-05 08:56:46.101138+00	2023-04-05 08:56:46.101138+00
 15	wallson2	Modern Wallson 2	Wallson	2023-04-05 08:56:46.101138+00	2023-04-05 08:56:46.101138+00
+16	sansanchoz1small	Key chain HR - Smaller text	Detroit	2026-01-22 19:35:36.383395+00	2026-01-22 19:35:36.383395+00
 \.
 
+
+ALTER TABLE geokrety.gk_labels ENABLE TRIGGER ALL;
 
 --
 -- Name: gk_labels_id_seq; Type: SEQUENCE SET; Schema: geokrety; Owner: -
 --
 
-SELECT pg_catalog.setval('geokrety.gk_labels_id_seq', 15, true);
+SELECT pg_catalog.setval('geokrety.gk_labels_id_seq', 16, true);
 
 
 --
 -- PostgreSQL database dump complete
 --
+
+\unrestrict c91JJyh1hYt0qlJqYRgEF6GEJuZIwksRawIoedA9C2VijPcCsCBqh82bVAC9vTv
 

@@ -1,11 +1,12 @@
+TRUNCATE geokrety.gk_waypoints_country CASCADE;
 --
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.2 (Debian 12.2-2.pgdg100+1)
--- Dumped by pg_dump version 12.1
+\restrict 06tSEyCR7mBEnwZ8Nm8kSZKCj99bEOZ3d8CPnj6uTvrnS9oj6SWlh0zbzf4RSNa
 
--- Started on 2020-03-31 19:57:11 GMT
+-- Dumped from database version 16.13 (Ubuntu 16.13-1.pgdg24.04+1)
+-- Dumped by pg_dump version 18.3 (Ubuntu 18.3-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -19,10 +20,12 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 3050 (class 0 OID 21171)
--- Dependencies: 245
--- Data for Name: gk_waypoints_country; Type: TABLE DATA; Schema: geokrety; Owner: geokrety
+-- Data for Name: gk_waypoints_country; Type: TABLE DATA; Schema: geokrety; Owner: -
 --
+
+SET SESSION AUTHORIZATION DEFAULT;
+
+ALTER TABLE geokrety.gk_waypoints_country DISABLE TRIGGER ALL;
 
 COPY geokrety.gk_waypoints_country (original, country) FROM stdin;
 Afghanistan	Afghanistan
@@ -221,9 +224,11 @@ Zypern	Cyprus
 \.
 
 
--- Completed on 2020-03-31 19:57:11 GMT
+ALTER TABLE geokrety.gk_waypoints_country ENABLE TRIGGER ALL;
 
 --
 -- PostgreSQL database dump complete
 --
+
+\unrestrict 06tSEyCR7mBEnwZ8Nm8kSZKCj99bEOZ3d8CPnj6uTvrnS9oj6SWlh0zbzf4RSNa
 

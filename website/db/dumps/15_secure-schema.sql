@@ -2,8 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
--- Dumped by pg_dump version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
+\restrict QlNNfy1mpLL3eZfimg3mK31dJVozwVfpwCUEVKocyjn7yoEWgaDgccW5LG5ekit
+
+-- Dumped from database version 16.13 (Ubuntu 16.13-1.pgdg24.04+1)
+-- Dumped by pg_dump version 18.3 (Ubuntu 18.3-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -20,7 +22,8 @@ SET row_security = off;
 -- Name: secure; Type: SCHEMA; Schema: -; Owner: -
 --
 
-CREATE SCHEMA IF NOT EXISTS secure;
+CREATE SCHEMA secure;
+CREATE EXTENSION IF NOT EXISTS pgcrypto WITH SCHEMA public;
 
 
 SET default_tablespace = '';
@@ -68,4 +71,6 @@ ALTER TABLE ONLY secure.gpg_keys ALTER COLUMN id SET DEFAULT nextval('secure.gpg
 --
 -- PostgreSQL database dump complete
 --
+
+\unrestrict QlNNfy1mpLL3eZfimg3mK31dJVozwVfpwCUEVKocyjn7yoEWgaDgccW5LG5ekit
 

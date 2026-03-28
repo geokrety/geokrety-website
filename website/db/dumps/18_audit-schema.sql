@@ -2,8 +2,10 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
--- Dumped by pg_dump version 16.3 (Ubuntu 16.3-1.pgdg24.04+1)
+\restrict t3n7e5gz6t5s9cOnAKq7yI2wahxmK13DOU0gtJNOYbXKkR7agBpZoqVH52vWWde
+
+-- Dumped from database version 16.13 (Ubuntu 16.13-1.pgdg24.04+1)
+-- Dumped by pg_dump version 18.3 (Ubuntu 18.3-1.pgdg22.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -159,4 +161,6 @@ CREATE INDEX posts_route ON audit.posts USING btree (route);
 --
 -- PostgreSQL database dump complete
 --
+
+\unrestrict t3n7e5gz6t5s9cOnAKq7yI2wahxmK13DOU0gtJNOYbXKkR7agBpZoqVH52vWWde
 
