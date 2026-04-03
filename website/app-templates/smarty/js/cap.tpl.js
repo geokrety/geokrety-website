@@ -1,4 +1,5 @@
-$.get('/cap/ping').fail(() => {
+{*
+  $.get('/cap/ping').fail(() => {
   (async () => {
     window.CAP_CUSTOM_WASM_URL = window.location.protocol + "//" + window.location.host + "/cap/assets/cap_wasm.js";
     if (typeof Cap === "undefined") {
@@ -18,4 +19,7 @@ $.get('/cap/ping').fail(() => {
       console.error("CAP: solve() failed", error);
     }
   })();
+
 });
+*}
+window.CAP_CUSTOM_WASM_URL = window.location.protocol + "//" + window.location.host + "/cap/assets/cap_wasm.js";
