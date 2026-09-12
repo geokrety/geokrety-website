@@ -23,7 +23,7 @@ $supported['geocache'][] = ['https://www.terracaching.com/', 'terracaching', 'TC
 $supported['geocache'][] = ['https://navicache.com/', 'navicache', 'N', 'N00AB3'];
 $supported['geocache'][] = ['https://www.gpsgames.org/index.php?option=com_wrapper&wrap=Geocaching', 'Geocaching @gpsgames.org', 'GE', 'GE0174'];
 $supported['geocache'][] = ['https://geocaching.com.au/', 'Geocaching Australia', 'GA', 'GA0141'];
-$supported['geocache'][] = ['https://www.geocaching.su/', 'GeoCaching Russia', 'GE/ VI/ MS/ TR/ EX/', 'TR/1470'];
+$supported['geocache'][] = ['https://www.geocaching.su/', 'GeoCaching Russia', 'GE/ MV/ VI/ MS/ TR/ EX/', 'TR/1470'];
 $supported['geocache'][] = ['https://www.rejtekhely.ro/', 'Geocaching Transsylvania', 'RH', 'RH0004'];
 
 // $supported['games'][] = Array('http://wpg.alleycat.pl/', 'WaypointGame', 'WPG', 'WPG1180');
