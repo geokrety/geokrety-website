@@ -55,11 +55,13 @@ function go2geo($waypoint) {
 
     // russian VI/6569
     $prefiksy['3']['GE/'] = 'https://www.geocaching.su/?pn=101&cid=';
+    $prefiksy['3']['MV/'] = 'https://www.geocaching.su/?pn=101&cid=';
     $prefiksy['3']['VI/'] = 'https://www.geocaching.su/?pn=101&cid=';
     $prefiksy['3']['MS/'] = 'https://www.geocaching.su/?pn=101&cid=';
     $prefiksy['3']['TR/'] = 'https://www.geocaching.su/?pn=101&cid=';
     $prefiksy['3']['EX/'] = 'https://www.geocaching.su/?pn=101&cid=';
     $prefiksy['2']['GE'] = 'https://www.geocaching.su/?pn=101&cid=';
+    $prefiksy['2']['MV'] = 'https://www.geocaching.su/?pn=101&cid=';
     $prefiksy['2']['VI'] = 'https://www.geocaching.su/?pn=101&cid=';
     $prefiksy['2']['MS'] = 'https://www.geocaching.su/?pn=101&cid=';
     $prefiksy['2']['TR'] = 'https://www.geocaching.su/?pn=101&cid=';
@@ -76,7 +78,7 @@ function go2geo($waypoint) {
     $prefiksy_dec = ['N', 'SH', 'T'];
 
     // waypoints, that need waypoint (number) without prefix
-    $prefiksy_sufiksy = ['GE/', 'VI/', 'MS/', 'TR/', 'EX/', 'GE', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'TP'];
+    $prefiksy_sufiksy = ['GE/', 'MV/', 'VI/', 'MS/', 'TR/', 'EX/', 'GE', 'MV', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'TP'];
 
     // ----------------------
     // shorter prefix may itself be the prefix of a longer prefix
