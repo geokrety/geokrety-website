@@ -6,7 +6,7 @@ namespace GeoKrety\Service;
  * WaypointInfo : Some waypoint helpers.
  */
 class WaypointInfo {
-    public const PREFIX_OC = ['OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR', 'LT', 'LV'];
+    public const PREFIX_OC = ['OC', 'OP', 'OK', 'GE', 'OZ', 'OU', 'ON', 'OL', 'OJ', 'OS', 'GD', 'GA', 'MV', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'OX', 'OB', 'OR', 'LT', 'LV'];
     public const PREFIX_GC = ['GC']; // Geocaching
     public const PREFIX_OTHER_1 = ['N']; // Navicache
     public const PREFIX_OTHER_3 = ['WPG'];
