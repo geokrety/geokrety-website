@@ -78,8 +78,10 @@ function go2geo($waypoint) {
     // waypoints, that need waypoint (number) without prefix
     $prefiksy_sufiksy = ['GE/', 'VI/', 'MS/', 'TR/', 'EX/', 'GE', 'VI', 'MS', 'TR', 'EX', 'GR', 'RH', 'TP'];
 
-    // --- order of chceking:
-    $check_order = [2, 3, 1];
+    // ----------------------
+    // shorter prefix may itself be the prefix of a longer prefix
+    // check longer prefixes first to ensure they are not shadowed by shorter prefixes
+    $check_order = [3, 2, 1];
 
     // -------------------------------------------------- START ------------------------------------- //
 
