@@ -26,6 +26,9 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
     private array $failingPartners = [];
 
     public function process() {
+        // OKAPI full dumps can be large; raise the limit for this request only,
+        // without touching the shared PHP-FPM/container memory_limit.
+        ini_set('memory_limit', '512M');
         $this->console_writer->setPattern('Importing %7s: %6.2f%% (%s/%d) - A:%d U:%d D:%d S:%d E:%d');
         $this->db->commit(); // Terminate "general" transaction
         $this->has_error = false;
@@ -108,6 +111,8 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
                 $changes = json_decode(file_get_contents($tmpdir.'/'.$piece));
                 $this->mPart = sprintf('%s/%d', $piece, $totalFiles);
                 $this->perform_incremental_update($okapi, $changes);
+                unset($changes);
+                gc_collect_cycles();
             }
             $this->save_metrics($okapi);
             $this->save_last_update($okapi, $index->revision);
@@ -125,6 +130,13 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
      * @throws \Exception
      */
     private function perform_incremental_update(string $okapi, array $changes) {
+        // Cortex's query parser caches every distinct filter it ever parses (including
+        // bound values) for the lifetime of the process, with no eviction. Since every
+        // waypoint here is loaded/erased with a unique id, that cache grows unbounded
+        // over a long-running import and eventually exhausts memory. There is no public
+        // API to disable or clear it, so it has to be reset via reflection before each batch.
+        $this->reset_cortex_query_cache();
+
         $this->nTotal += sizeof($changes);
         foreach ($changes as $change) {
             if ($change->object_type != 'geocache') {
@@ -192,6 +204,12 @@ class WaypointsImporterOKAPI extends WaypointsImporterBase {
         if ($this->nError > 0) {
             $this->has_error = true;
         }
+    }
+
+    private function reset_cortex_query_cache(): void {
+        $prop = new \ReflectionProperty(\DB\CortexQueryParser::class, 'queryCache');
+        $prop->setAccessible(true);
+        $prop->setValue(\DB\CortexQueryParser::instance(), []);
     }
 
     private function print_stats() {
