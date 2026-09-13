@@ -129,7 +129,7 @@ services:
     image: redis:5
 
   minio:
-    image: minio/minio
+    image: reg.mini.dev/minio
     command:
       - "server"
       - "/data"
