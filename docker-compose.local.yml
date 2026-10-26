@@ -129,7 +129,7 @@ services:
     image: redis:5
 
   minio:
-    image: reg.mini.dev/minio
+    image: pgsty/silo
     command:
       - "server"
       - "/data"
