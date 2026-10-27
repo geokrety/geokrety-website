@@ -1,5 +1,5 @@
 ARG BASE_IMAGE=geokrety/website-base
-ARG BASE_TAG=1.1.3
+ARG BASE_TAG=1.1.4
 FROM ${BASE_IMAGE}:${BASE_TAG}
 
 LABEL maintainer="GeoKrety Team <contact@geokrety.org>"
